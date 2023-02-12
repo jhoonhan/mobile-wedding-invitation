@@ -9,7 +9,7 @@ const imageList = [nameCombo];
 const Home = () => {
   const height = window.innerHeight;
 
-  
+  // WORK HERE-- make it into resueable custom hook!
   const [loaded, setLoaded] = useState([]);
 
   useEffect(()=> {
@@ -19,7 +19,7 @@ const Home = () => {
       console.log("not loaded")
     }
   },[loaded])
-
+// 
 
   return (
     <section
