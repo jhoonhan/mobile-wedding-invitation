@@ -25,7 +25,7 @@ const Info = () => {
             <p className="f--h2 f2">Salvation Army of Greensboro</p>
             <p className="f2 ">1001 Freeman Mill Rd, Greensboro, NC 27406</p>
           </div>
-          <a href="#1" className="btn--cta hard">
+          <a href="#12" className="btn--cta hard">
             Get Direction
           </a>
         </div>
@@ -35,5 +35,3 @@ const Info = () => {
 };
 
 export default Info;
-
-//22
