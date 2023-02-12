@@ -1,0 +1,16 @@
+#section--gallery {
+  // min-height: 100vh;
+  & .gallery__content {
+    width: 100%;
+    gap: 2rem;
+
+    & .gallery__img {
+      width: 100%;
+      aspect-ratio: 1/1;
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}
