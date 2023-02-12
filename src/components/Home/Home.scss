@@ -21,10 +21,11 @@ $main-test-top-margin: 10%;
     max-width: var(--max-width);
     height: 80vh;
     // background-color: red;
-    background-image: url("../../assets/mainImg2.webp");
+    // background-image: url("../../assets/mainImg2.webp");
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
+    object-fit: cover;
   }
 
   & .home__texts__gradient {
