@@ -3,22 +3,22 @@ import "./Home.scss";
 import nameCombo from "../../assets/nameCombo.svg";
 import arrowDown from "../../assets/arrow-down.svg";
 import mainImg from "../../assets/mainImg2.webp"
-import useImageLoader from "../../useImageLoader";
 
-const imageList = [nameCombo, arrowDown, mainImg];
+const imageList = [nameCombo];
 
 const Home = () => {
   const height = window.innerHeight;
 
   
-  const [loaded, setLoaded] = useImageLoader(imageList);
+  const [loaded, setLoaded] = useState([]);
 
   useEffect(()=> {
-    console.log(loaded)
+    if(loaded.filter((el) => el === true).length === imageList.length) {
+      console.log("all loaded")
+    } else {
+      console.log("not loaded")
+    }
   },[loaded])
-
-
-
 
 
   return (
@@ -29,7 +29,7 @@ const Home = () => {
     >
       {/* <div className="home__bg" style={{ height: `${height}px` }} /> */}
       <img className="home__bg" src={mainImg} alt="main" style={{ height: `${height}px`, width:'auto' }}
-      onLoad={()=> setLoaded(true)}
+      onLoad={()=> setLoaded([...loaded, true])}
       />
       <div
         className="home__texts__gradient top"
