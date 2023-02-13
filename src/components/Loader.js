@@ -1,8 +1,16 @@
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Loader = () => {
   return (
-    <div className="spinner__container">
+    <motion.div
+      className="spinner__container"
+      key="aang"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ ease: "easeOut", duration: 1 }}
+    >
       <div className="lds-roller">
         <div></div>
         <div></div>
@@ -13,7 +21,7 @@ const Loader = () => {
         <div></div>
         <div></div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
