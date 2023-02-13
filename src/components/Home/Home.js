@@ -4,6 +4,8 @@ import nameCombo from "../../assets/nameCombo.svg";
 import arrowDown from "../../assets/arrow-down.svg";
 import mainImg from "../../assets/mainImg2.webp";
 import Loader from "../Loader";
+import { motion, AnimatePresence } from "framer-motion";
+import useImageLoader from "../../useImageLoader";
 
 const imageList = [nameCombo];
 
@@ -11,22 +13,10 @@ const Home = () => {
   const height = window.innerHeight;
 
   // WORK HERE-- make it into resueable custom hook!
-  const [loaded, setLoaded] = useState([]);
-  const [readyToRender, setReadyToRender] = useState(false);
-
-  useEffect(() => {
-    if (loaded.filter((el) => el === true).length === imageList.length) {
-      setReadyToRender(true);
-    } else {
-      setReadyToRender(false);
-    }
-  }, [loaded]);
-  //
 
   const render = () => {
     return (
       <>
-        {!readyToRender ? <Loader /> : ""}
         <section
           id="section--home"
           className="flex--v"
@@ -38,7 +28,7 @@ const Home = () => {
             src={mainImg}
             alt="main"
             style={{ height: `${height}px`, width: "auto" }}
-            onLoad={() => setLoaded([...loaded, true])}
+            // onLoad={() => setLoaded([...loaded, true])}
           />
           <div
             className="home__texts__gradient top"
