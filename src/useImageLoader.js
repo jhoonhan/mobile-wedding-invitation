@@ -1,27 +1,41 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-const useImageLoader = (imageList) => {
-  // Get all the images on the page
-  const [imagesLoaded, setImagesLoaded] = useState(0);
-  const [allLoaded, setAllLoaded] = useState(false);
+const useImageLoader = (imageUrls) => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imageCount, setImageCount] = useState(0);
 
   useEffect(() => {
-    imageList.forEach((img) => {
-      const image = new window.Image();
-      image.src = img;
-      image.onload = () => {
-        setImagesLoaded(imagesLoaded + 1);
-      };
+    let loadedCount = 0;
+
+    const checkAllLoaded = () => {
+      if (loadedCount === imageUrls.length) {
+        setImagesLoaded(true);
+        setImageCount(loadedCount);
+      }
+    };
+
+    const imageLoadHandler = () => {
+      loadedCount++;
+      checkAllLoaded();
+    };
+
+    const images = imageUrls.map((url) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = imageLoadHandler;
+      img.onerror = imageLoadHandler;
+      return img;
     });
-  }, [imageList]);
 
-  useEffect(() => {
-    if (imagesLoaded === imageList.length) {
-      setAllLoaded(true);
-    }
-  }, [imagesLoaded]);
+    return () => {
+      images.forEach((img) => {
+        img.onload = null;
+        img.onerror = null;
+      });
+    };
+  }, [imageUrls]);
 
-  return [allLoaded];
+  return [imagesLoaded, imageCount];
 };
 
 export default useImageLoader;

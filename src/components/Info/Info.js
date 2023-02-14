@@ -3,7 +3,11 @@ import "./Info.scss";
 
 const Info = () => {
   return (
-    <section id="section--info" className="flex--v align--cc ">
+    <section
+      id="section--info"
+      className="flex--v align--cc "
+      data-animation-container="1"
+    >
       <div className="info__text flex--v align--cc " style={{ gap: "4rem" }}>
         <div
           className="flex--v align--cc animation__opacity-in"

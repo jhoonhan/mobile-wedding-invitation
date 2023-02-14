@@ -1,9 +1,10 @@
-import { Route, Switch, useLocation } from "react-router-dom";
 import "./scss/App.scss";
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import animationLibray from "./components/animationLibrary.js";
 import useImageLoader from "./useImageLoader";
+import useFontLoader from "./useFontLoader";
 
 import Home from "./components/Home/Home";
 import Info from "./components/Info/Info";
@@ -12,22 +13,40 @@ import Gallery from "./components/Gallery/Gallery";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader";
 
+import font from "./assets/NanumMyeongjo.ttf";
+// Home
 import mainImg from "./assets/mainImg2.webp";
+import arrowDown from "./assets/arrow-down.svg";
+import nameCombo from "./assets/nameCombo.svg";
 
-const imageList = [mainImg];
+// Gallery
+import img1 from "./assets/img1.jpg";
+import img2 from "./assets/img2.jpg";
+
+const imageList = [mainImg, arrowDown, nameCombo, img1, img2];
 
 const App = () => {
-  const [allLoaded] = useImageLoader(imageList);
+  // Pre load all data
+  const [imagesLoaded, imageCount] = useImageLoader(imageList);
+  const [fontLoaded, fontCount] = useFontLoader(font);
 
   useEffect(() => {
+    if (!imagesLoaded || !fontLoaded) return;
     animationLibray();
-  }, []);
+  }, [imagesLoaded, fontLoaded]);
 
   const render = () => {
-    // if (!allLoaded) return <Loader />;
+    if (!imagesLoaded) return <Loader />;
 
     return (
-      <div className="App flex--v align--cc">
+      <motion.div
+        className="App flex--v align--cc"
+        key="section--home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 1 }}
+      >
         <main className="flex--v align--cc">
           <Home />
           <Info />
@@ -35,7 +54,7 @@ const App = () => {
           <Gallery />
         </main>
         <Footer />
-      </div>
+      </motion.div>
     );
   };
   return render();

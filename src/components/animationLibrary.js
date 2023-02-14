@@ -99,11 +99,11 @@ function animationLibrary() {
         const intersecting = entry.isIntersecting;
 
         // Animations with container listens for container element then apply animation to target element
-        const nodes = !container
+        const containerNode = !container
           ? [entry.target]
           : entry.target.querySelectorAll(target);
 
-        nodes.forEach((node) => {
+        containerNode.forEach((node) => {
           setTransition(node, styles);
           styles.forEach(({ prop, init, to }) => {
             if (toggle) {
@@ -143,6 +143,26 @@ function animationLibrary() {
   const observeAnimation = (animationValues) => {
     const { container, target, styles } = animationValues;
     const queryNodes = document.querySelectorAll(container || target);
+    // console.log(queryNodes);
+    // const overrideNodes = queryNodes.map((node) => {
+    //   return node.closets("[data-animation-container='true']");
+    // });
+    // console.log(overrideNodes);
+    // const aang =
+    //   queryNodes[0] &&
+    //   queryNodes[0].closets("[data-animation-container='true']");
+    const aang = () => {
+      if (queryNodes.length > 0) {
+        queryNodes.forEach((node) => {
+          if (!node) return;
+          console.log(node);
+          // console.log(node.closets("[data-animation-container='true']"));
+        });
+      }
+    };
+    console.log(aang());
+
+    // console.log(queryNodes[0].closest("[data-animation-container]"));
 
     // Container can be defined if you want to listen for container and apply animation to target
     if (!container) {
