@@ -31,8 +31,7 @@ const App = () => {
   const [fontLoaded, fontCount] = useFontLoader(font);
 
   useEffect(() => {
-    if (!imagesLoaded || !fontLoaded) return;
-    animationLibray();
+    if (imagesLoaded && fontLoaded) animationLibray();
   }, [imagesLoaded, fontLoaded]);
 
   const render = () => {

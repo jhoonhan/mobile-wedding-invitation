@@ -27,6 +27,7 @@ function animationLibrary() {
         .join("")
     );
   };
+  // Gets matching nodes and sets init value
   const setInitState = (nodes, styles) => {
     nodes.forEach((node) => {
       styles.forEach((style) => {
@@ -94,16 +95,30 @@ function animationLibrary() {
     const { container, target, styles, threshold, toggle } =
       combinedAnimationProps;
 
+    const overrideContainer = node.closest("[data-animation-container='true']");
+    let containerNode = !overrideContainer ? node : overrideContainer;
+
     const trigger = new IntersectionObserver(
       ([entry]) => {
         const intersecting = entry.isIntersecting;
 
-        // Animations with container listens for container element then apply animation to target element
-        const containerNode = !container
-          ? [entry.target]
-          : entry.target.querySelectorAll(target);
+        const overrideContainer = entry.target.closest(
+          "[data-animation-container='true']"
+        );
+        const overrideTagets = overrideContainer
+          ? overrideContainer.querySelectorAll(target)
+          : [];
 
-        containerNode.forEach((node) => {
+        // Animations with container listens for container element then apply animation to target element
+        let animationTarget;
+        if (overrideContainer) {
+          animationTarget = overrideTagets;
+        }
+        if (!overrideContainer && !container) animationTarget = [entry.target];
+        if (!overrideContainer && container)
+          animationTarget = entry.target.querySelectorAll(target);
+
+        animationTarget.forEach((node) => {
           setTransition(node, styles);
           styles.forEach(({ prop, init, to }) => {
             if (toggle) {
@@ -116,7 +131,8 @@ function animationLibrary() {
       },
       { threshold }
     );
-    trigger.observe(node);
+
+    trigger.observe(containerNode);
   };
 
   // CONTROLLER
@@ -144,16 +160,7 @@ function animationLibrary() {
     const { container, target, styles } = animationValues;
     const queryNodes = document.querySelectorAll(container || target);
 
-    // check and see if there is an override container
     if (!container) {
-      const nodes = document.querySelectorAll(
-        "[data-animation-container='true']"
-      );
-      console.log(`there is no container ${nodes}`);
-    }
-
-
-
       setInitState(queryNodes, styles);
     } else {
       queryNodes.forEach((el) => {
