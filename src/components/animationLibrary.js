@@ -96,15 +96,19 @@ function animationLibrary() {
       combinedAnimationProps;
 
     const overrideContainer = node.closest("[data-animation-container='true']");
-    let containerNode = !overrideContainer ? node : overrideContainer;
+    const containerNode = !overrideContainer ? node : overrideContainer;
+
+    const animationThreshold = !overrideContainer
+      ? threshold
+      : +overrideContainer.dataset.animationThreshold || threshold;
 
     const trigger = new IntersectionObserver(
       ([entry]) => {
         const intersecting = entry.isIntersecting;
 
-        const overrideContainer = entry.target.closest(
-          "[data-animation-container='true']"
-        );
+        // const overrideContainer = entry.target.closest(
+        //   "[data-animation-container='true']"
+        // );
         const overrideTagets = overrideContainer
           ? overrideContainer.querySelectorAll(target)
           : [];
@@ -129,9 +133,8 @@ function animationLibrary() {
           });
         });
       },
-      { threshold }
+      { threshold: animationThreshold }
     );
-
     trigger.observe(containerNode);
   };
 

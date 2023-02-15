@@ -3,7 +3,12 @@ import "./Rsvp.scss";
 
 const Rsvp = () => {
   return (
-    <section id="section--rsvp" className="flex--v align--cc">
+    <section
+      id="section--rsvp"
+      className="flex--v align--cc"
+      data-animation-container="true"
+      data-animation-threshold="0.8"
+    >
       <div
         className="animation__text-appear-down flex--v align--cc"
         data-animation-delay="0.7"
@@ -30,17 +35,21 @@ const Rsvp = () => {
         </div>
       </div>
 
-      <form
-        className="flex--v animation__opacity-in"
-        data-animation-delay="0.7"
-        // data-animation-threshold="0.3"
-      >
-        <div className="flex--v">
+      <form className="flex--v ">
+        <div
+          className="flex--v animation__opacity-in"
+          data-animation-delay="0.7"
+          data-animation-sequence="0"
+        >
           <label>Your Name :</label>
           <input type="number" placeholder="강무환"></input>
         </div>
 
-        <div className="flex--v">
+        <div
+          className="flex--v animation__opacity-in"
+          data-animation-delay="0.7"
+          data-animation-sequence="1"
+        >
           <label>Attending :</label>
           <div className="grid--column--2" style={{ gap: "var(--gap--d)" }}>
             <a className="btn--cta soft">Yes</a>
@@ -48,12 +57,22 @@ const Rsvp = () => {
           </div>
         </div>
 
-        <div className="flex--v">
+        <div
+          className="flex--v animation__opacity-in"
+          data-animation-delay="0.7"
+          data-animation-sequence="2"
+        >
           <label>Number of Your Guests :</label>
           <input type="number"></input>
         </div>
 
-        <button className="btn--cta hard">Submit</button>
+        <button
+          className="btn--cta hard animation__opacity-in"
+          data-animation-delay="0.7"
+          data-animation-sequence="3"
+        >
+          Submit
+        </button>
       </form>
     </section>
   );
