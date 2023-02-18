@@ -14,9 +14,12 @@ const Rsvp = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // console.log(attending);
-    console.log(user);
-  }, [attending]);
+    // console.log(guests);
+  }, []);
+
+  useEffect(() => {
+    setFormGuest(guests);
+  }, [user.state]);
 
   const handleChange = (e) => {
     const inputValue = +e.target.value;

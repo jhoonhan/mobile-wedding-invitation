@@ -20,7 +20,7 @@ const useContextValues = () => {
   const [data, setData] = useState(false);
   const [user, setUser] = useState({
     InviteId: "1000",
-    name: "123",
+    name: 123,
     guests: 1,
     attending: false,
   });

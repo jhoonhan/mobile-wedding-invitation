@@ -43,7 +43,7 @@ const App = () => {
   }, [fontLoaded]);
 
   useEffect(() => {
-    console.log(user.state);
+    // console.log(user.state);
   }, [user.state]);
 
   useEffect(() => {
