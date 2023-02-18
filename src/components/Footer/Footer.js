@@ -7,6 +7,7 @@ import arrowDown from "../../assets/arrow-down_dark.svg";
 import Loader from "../Loader";
 
 import "./Footer.scss";
+import loveImg from "../../assets/love.jpg";
 
 const SUCCESSMSGDATA = "축복 감사합니다. 행복하게 살겠습니다!";
 
@@ -66,24 +67,32 @@ const Footer = () => {
         onClick={handleExpandClick}
       >
         <p>더욱 격렬하게 축복하고 싶으시다고요?</p>
-        <div className="bujo-box__expand  flex--h align--cc">
-          <p>Expand</p>
-          <img
-            src={arrowDown}
-            className="icon--arrow"
-            alt="down arrow"
-            style={{
-              marginBottom: "0rem",
-              width: "1.3rem",
-              transform: `rotate(${expand ? 180 : 0}deg)`,
-            }}
-          />
+        <div className="flex--v ">
+          <div className="bujo-box__expand flex--h">
+            <p>Expand</p>
+            <img
+              src={arrowDown}
+              className="icon--arrow"
+              alt="down arrow"
+              style={{
+                marginBottom: "0rem",
+                width: "1.3rem",
+                transform: `rotate(${expand ? 180 : 0}deg)`,
+              }}
+            />
+          </div>
+          <div className="bujo-box__expand__border" />
         </div>
         <div
           className="bujo-box__hidebox flex--v align--cc"
-          style={{ opacity: `${expand ? 1 : 0}`, gap: "0.5rem" }}
+          style={{
+            opacity: `${expand ? 1 : 0}`,
+            gap: "2rem",
+            maxHeight: `${expand ? "100vh" : "0px"}`,
+          }}
         >
           <p>사양하지않고 감사히 받겠습니다</p>
+          <img src={loveImg} alt="aaang" style={{ width: "100%" }} />
           <div>
             <p>신한 12345123-123-3213123 한정훈</p>
             <p>농협 12345123-123-3213123 김예원</p>

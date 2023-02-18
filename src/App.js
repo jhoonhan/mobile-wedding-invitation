@@ -28,16 +28,10 @@ const App = () => {
     const userId = param ? param : "1000";
     // const fetch = { data: data.state, setData: data.set };
     if (param) {
-      console.log(`theres param`);
-      // fetchData(fetch);
       fetchUser(userId, user.set);
       fetchMessage(userId, userMessage.set);
     }
   }, []);
-
-  useEffect(() => {
-    console.log(contextValues);
-  }, [contextValues]);
 
   useEffect(() => {
     if (allFetched) animationLibray();
@@ -47,22 +41,15 @@ const App = () => {
     if (!allFetched) return <Loader />;
 
     return (
-      <motion.div
-        className="App flex--v align--cc"
-        key="section--home"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ ease: "easeOut", duration: 1 }}
-      >
+      <div className="App flex--v align--cc" key="section--home">
         <main className="flex--v align--cc">
-          <Home />
+          <Home readyTorender={allFetched} />
           <Info />
           <Rsvp />
           <Gallery />
         </main>
         <Footer />
-      </motion.div>
+      </div>
     );
   };
   return (

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+
 import "./Home.scss";
 import nameCombo from "../../assets/nameCombo.svg";
 import arrowDown from "../../assets/arrow-down.svg";
@@ -6,7 +7,7 @@ import mainImg from "../../assets/mainImg2.webp";
 import { AppContext } from "../../App";
 import Loader from "../Loader";
 
-const Home = () => {
+const Home = ({ readyTorender }) => {
   const height = window.innerHeight;
   const contextValues = useContext(AppContext);
 
@@ -17,6 +18,7 @@ const Home = () => {
   // WORK HERE-- make it into resueable custom hook!
 
   const render = () => {
+    if (!readyTorender) return null;
     return (
       <>
         <section
@@ -36,11 +38,7 @@ const Home = () => {
             className="home__texts__gradient top"
             style={{ height: `${height / 2}px` }}
           ></div>
-          <div
-            className="home__texts animation__opacity-in"
-            data-animation-delay="5"
-            data-animation-speed="0.5"
-          >
+          <div className="home__texts">
             <img
               src={nameCombo}
               alt="han J"
@@ -51,13 +49,18 @@ const Home = () => {
             className="home__texts__gradient bottom"
             style={{ height: `${height / 10}px` }}
           >
-            <p>Scroll Down</p>
-            <img
-              src={arrowDown}
-              className="icon--arrow"
-              alt="down arrow"
-              style={{ marginBottom: "3rem" }}
-            />
+            <div
+              className="home__texts__scroll-down flex--v align--cc"
+              style={{ gap: "1rem" }}
+            >
+              <p>Scroll Down</p>
+              <img
+                src={arrowDown}
+                className="icon--arrow"
+                alt="down arrow"
+                style={{ marginBottom: "3rem" }}
+              />
+            </div>
           </div>
         </section>
       </>

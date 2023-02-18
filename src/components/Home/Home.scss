@@ -1,5 +1,33 @@
 $main-test-top-margin: 10%;
 
+@keyframes opacityin {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opacityin2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes arrow {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 #section--home {
   position: relative;
 
@@ -9,11 +37,13 @@ $main-test-top-margin: 10%;
   justify-content: flex-start;
   align-items: center;
 
+  animation-name: opacityin;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
   // background-image: url("../../assets/mainImg2.webp");
   // background-size: cover;
   // background-position: bottom center;
   // background-repeat: no-repeat;
-
   & .home__bg {
     position: fixed;
     top: 0;
@@ -38,7 +68,6 @@ $main-test-top-margin: 10%;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
 
     & * {
       color: var(--color-font--light);
@@ -59,12 +88,14 @@ $main-test-top-margin: 10%;
     &.bottom {
       bottom: 0;
       height: 10vh;
-      // background: rgb(3, 4, 13);
-      // background: linear-gradient(
-      //   180deg,
-      //   rgba(3, 4, 13, 0) 0%,
-      //   rgba(3, 4, 13, 1) 100%
-      // );
+    }
+
+    & .home__texts__scroll-down {
+      animation-name: arrow;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+
+      // background-color: red;
     }
   }
 
@@ -81,7 +112,12 @@ $main-test-top-margin: 10%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    opacity: 0;
 
+    animation-name: opacityin2;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
     & img {
       // width: 45%;
       height: 25vh;
