@@ -38,7 +38,7 @@ const Rsvp = () => {
   };
 
   const render = () => {
-    if (noway) return null;
+    if (noway || InviteId === "0000") return null;
     return (
       <motion.section
         id="section--rsvp"

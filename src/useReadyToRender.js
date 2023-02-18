@@ -6,9 +6,18 @@ const useReadyToRender = (contextValues) => {
   const [allFetched, setAllFetched] = useState(false);
 
   useEffect(() => {
-    if (imagesLoaded.state && fontLoaded.state && data && user.state.InviteId)
+    if (
+      imagesLoaded.state &&
+      fontLoaded.state &&
+      // data.state &&
+      user.state.InviteId
+    )
       setAllFetched(true);
   }, [contextValues]);
+
+  useEffect(() => {
+    // console.log(allFetched);
+  }, [allFetched]);
 
   return allFetched;
 };

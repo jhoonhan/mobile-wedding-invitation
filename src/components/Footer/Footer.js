@@ -14,18 +14,25 @@ const Footer = () => {
   const { user, userMessage } = useContext(AppContext);
   const { InviteId, name, bujo } = user.state;
   const userMessageData = userMessage.state.message;
+  const userMessageName = user.state.name;
 
   const [messageData, setMessageData] = useState(userMessageData);
+  const [messageName, setMessageName] = useState(userMessageName);
+
   const [successMsg, setSuccessMsg] = useState(null);
   const [loading, setLoading] = useState(false);
   const [expand, setExpand] = useState(false);
 
   useEffect(() => {
     setMessageData(userMessageData);
-  }, [userMessageData]);
+    setMessageName(userMessageName);
+  }, [userMessageData, userMessageName]);
 
   const handleChange = (e) => {
     setMessageData(e.target.value);
+  };
+  const handleNameCange = (e) => {
+    setMessageName(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -34,12 +41,11 @@ const Footer = () => {
     const formData = {
       Id: user.state.InviteId,
       InviteId,
-      from: user.state.name,
+      from: messageName,
       message: messageData,
     };
     const updatedUser = await updateMessage(InviteId, formData);
     if (updatedUser.success) {
-      userMessage.set(updatedUser.item);
       setLoading(false);
       setSuccessMsg(SUCCESSMSGDATA);
     }
@@ -126,13 +132,29 @@ const Footer = () => {
             style={{ width: "100%" }}
             onSubmit={handleSubmit}
           >
-            <label
+            <div
               className="animation__opacity-in"
               data-animation-delay="0.7"
               data-animation-sequence="1"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "auto 1fr",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
             >
-              From : <span className="f2">{name}</span>
-            </label>
+              <label>From :</label>
+              {name ? (
+                <span className="f2">{name}</span>
+              ) : (
+                <input
+                  type="text"
+                  value={messageName}
+                  onChange={handleNameCange}
+                  style={{ width: "100%" }}
+                ></input>
+              )}
+            </div>
             <textarea
               onChange={handleChange}
               className="animation__opacity-in"

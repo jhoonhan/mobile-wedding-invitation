@@ -1,10 +1,14 @@
-const USERURL = "http://localhost:3002/api/v1/aws/user";
-const MESSAGEURL = "http://localhost:3002/api/v1/aws/message";
+import { v1 as uuidv1 } from "uuid";
+
+const USERURL = "http://192.168.2.6:3002/api/v1/aws/user";
+const MESSAGEURL = "http://192.168.2.6:3002/api/v1/aws/message";
+// const USERURL = "http://localhost:3002/api/v1/aws/user";
+// const MESSAGEURL = "http://localhost:3002/api/v1/aws/message";
 
 export const fetchData = async ({ data, setData }) => {
   try {
     const data = await (await fetch(`${USERURL}/all`)).json();
-
+    console.log(data);
     setData(true);
     return data;
   } catch (error) {
@@ -53,14 +57,22 @@ export const updateUser = async (userId, body) => {
 
 export const updateMessage = async (userId, body) => {
   try {
-    console.log(body);
+    // console.log(uuidv1());
+    const conditionalId = userId === "0000" ? uuidv1() : userId;
+    // console.log(conditionalId);
+    const conditionalBody = {
+      ...body,
+      Id: conditionalId,
+      InviteId: conditionalId,
+    };
+
     const data = await (
       await fetch(`${MESSAGEURL}/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(conditionalBody),
       })
     ).json();
 

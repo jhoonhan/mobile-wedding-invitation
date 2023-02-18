@@ -26,24 +26,18 @@ const App = () => {
   useEffect(() => {
     const param = window.location.pathname.slice(1);
     const userId = param ? param : "1000";
-    const fetch = { data: data.state, setData: data.set };
-    fetchData(fetch);
-    fetchUser(userId, user.set);
-    fetchMessage(userId, userMessage.set);
-
-    // updateUser("1234", {
-    //   attending: true,
-    //   guests: 1020,
-    // });
+    // const fetch = { data: data.state, setData: data.set };
+    if (param) {
+      console.log(`theres param`);
+      // fetchData(fetch);
+      fetchUser(userId, user.set);
+      fetchMessage(userId, userMessage.set);
+    }
   }, []);
 
   useEffect(() => {
-    // console.log(fontLoaded);
-  }, [fontLoaded]);
-
-  useEffect(() => {
-    // console.log(user.state);
-  }, [user.state]);
+    console.log(contextValues);
+  }, [contextValues]);
 
   useEffect(() => {
     if (allFetched) animationLibray();

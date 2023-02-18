@@ -19,9 +19,9 @@ const useContextValues = () => {
   const [fontLoaded, fontCount] = useFontLoader(font);
   const [data, setData] = useState(false);
   const [user, setUser] = useState({
-    InviteId: "1000",
-    name: 123,
-    guests: 1,
+    InviteId: "0000",
+    name: "",
+    guests: 0,
     attending: false,
     en: true,
     noway: false,

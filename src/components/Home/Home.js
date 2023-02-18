@@ -29,7 +29,7 @@ const Home = () => {
             className="home__bg"
             src={mainImg}
             alt="main"
-            style={{ height: `${height}px`, width: "auto" }}
+            style={{ height: `${height}px`, width: "100%" }}
             // onLoad={() => setLoaded([...loaded, true])}
           />
           <div
