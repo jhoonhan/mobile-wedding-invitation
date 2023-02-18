@@ -1,10 +1,10 @@
-export const fetchData = async ({ fetched, setFetched }) => {
+export const fetchData = async ({ data, setData }) => {
   try {
     const data = await (
       await fetch("http://localhost:3002/api/v1/aws/all")
     ).json();
 
-    setFetched({ ...fetched, data: true });
+    setData(true);
     return data;
   } catch (error) {
     console.error(error);
@@ -18,7 +18,32 @@ export const fetchUser = async (userId, { fetched, setFetched }, setUser) => {
     ).json();
 
     setUser(data.Item);
-    setFetched({ ...fetched, user: true });
+    return data;
+  } catch (err) {
+    console.err(err);
+  }
+};
+
+// export const updateUser = async (userId, body)=> {
+//   try {
+//     const res = await
+//   }
+// }
+
+export const updateUser = async (userId, body) => {
+  try {
+    // console.log(body);
+    const data = await (
+      await fetch(`http://localhost:3002/api/v1/aws/update/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(body),
+      })
+    ).json();
+
     return data;
   } catch (err) {
     console.err(err);

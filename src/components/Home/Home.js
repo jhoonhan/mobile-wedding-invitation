@@ -11,7 +11,7 @@ const Home = () => {
   const contextValues = useContext(AppContext);
 
   useEffect(() => {
-    // console.log(test123);
+    // console.log(contextValues);
   }, []);
 
   // WORK HERE-- make it into resueable custom hook!

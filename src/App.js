@@ -3,8 +3,6 @@ import React, { useEffect, useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import animationLibray from "./components/animationLibrary.js";
-import useImageLoader from "./useImageLoader";
-import useFontLoader from "./useFontLoader";
 
 import Home from "./components/Home/Home";
 import Info from "./components/Info/Info";
@@ -13,53 +11,46 @@ import Gallery from "./components/Gallery/Gallery";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader";
 
-import { fetchData, fetchUser } from "./actions";
-
-import font from "./assets/NanumMyeongjo.ttf";
-// Home
-import mainImg from "./assets/mainImg2.webp";
-import arrowDown from "./assets/arrow-down.svg";
-import nameCombo from "./assets/nameCombo.svg";
-
-// Gallery
-import img1 from "./assets/img1.jpg";
-import img2 from "./assets/img2.jpg";
+import { fetchData, fetchUser, updateUser } from "./actions";
 import useContextValues from "./useContextValues";
-
-const imageList = [mainImg, arrowDown, nameCombo, img1, img2];
 
 export const AppContext = React.createContext();
 
 const App = () => {
   // Pre load all data
   const contextValues = useContextValues();
-  const [imagesLoaded, imageCount] = useImageLoader(imageList);
-  const [fontLoaded, fontCount] = useFontLoader(font);
-  const [fetched, setFetched] = useState({ data: false, user: false });
-
-  const [user, setUser] = useState(null);
+  const { imagesLoaded, fontLoaded, data, user } = contextValues;
 
   useEffect(() => {
     const userId = window.location.pathname.slice(1);
-    fetchData({ fetched, setFetched });
-    fetchUser(userId, { fetched, setFetched }, setUser);
-    // console.log(contextValues);
+    const fetch = { data: data.state, setData: data.set };
+    fetchData(fetch);
+    fetchUser(userId, fetch, user.set);
+
+    // updateUser("1234", {
+    //   attending: true,
+    //   guests: 1020,
+    // });
   }, []);
 
   useEffect(() => {
-    // console.log(fetched);
-  }, [fetched]);
+    // console.log(data.state);
+  }, [data.state]);
 
   useEffect(() => {
-    // console.log(user);
-  }, [user]);
+    // console.log(fontLoaded);
+  }, [fontLoaded]);
 
   useEffect(() => {
-    if (imagesLoaded && fontLoaded) animationLibray();
-  }, [imagesLoaded, fontLoaded]);
+    // console.log(user.state);
+  }, [user.state]);
+
+  useEffect(() => {
+    if (imagesLoaded.state && fontLoaded.state) animationLibray();
+  }, [imagesLoaded.state, fontLoaded.state]);
 
   const render = () => {
-    if (!imagesLoaded || !fetched) return <Loader />;
+    if (!imagesLoaded.state || !fontLoaded.state || !data) return <Loader />;
 
     return (
       <motion.div
