@@ -54,7 +54,7 @@ const App = () => {
       !imagesLoaded.state ||
       !fontLoaded.state ||
       !data.state ||
-      !user.state.InviteId
+      !user?.state?.InviteId
     )
       return <Loader />;
 
