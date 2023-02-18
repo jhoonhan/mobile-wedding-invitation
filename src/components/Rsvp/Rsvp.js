@@ -30,14 +30,15 @@ const Rsvp = () => {
     setLoading(true);
     e.preventDefault();
     const formData = {
+      ...user.state,
       attending: !attending,
       guests: formGuest,
     };
     const updatedUser = await updateUser(InviteId, formData);
     // console.log(updatedUser.success);
-    user.set(updatedUser.item);
 
     if (updatedUser.success) {
+      user.set(updatedUser.item);
       setLoading(false);
     }
   };

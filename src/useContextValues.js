@@ -26,6 +26,7 @@ const useContextValues = () => {
     en: true,
     noway: false,
     bujo: true,
+    message: "",
   });
 
   const values = {

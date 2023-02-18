@@ -1,0 +1,15 @@
+footer {
+  & .bujo-box {
+    gap: 2rem;
+
+    & .bujo-box__expand {
+      gap: 0.5rem;
+      padding-bottom: 0.2rem;
+      // background-color: red;
+      border-bottom: 1px solid var(--color--primary);
+    }
+    & .bujo-box__hidebox {
+      margin-top: 2rem;
+    }
+  }
+}

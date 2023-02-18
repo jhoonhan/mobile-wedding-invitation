@@ -10,6 +10,7 @@ html {
   font-weight: 400;
   font-size: var(--font-size--d);
   line-height: 1.5;
+  transition: 0.3s ease-in-out;
 }
 
 body {
@@ -148,6 +149,17 @@ form {
   // & label {
   //   font-weight: 600;
   // }
+
+  & textarea {
+    width: 100%;
+    min-height: 17rem;
+
+    padding: 1rem;
+    border: var(--border);
+    border-radius: 0;
+    outline: none;
+    box-sizing: border-box;
+  }
 
   & input,
   .mock-input {
