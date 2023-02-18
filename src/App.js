@@ -50,7 +50,13 @@ const App = () => {
   }, [imagesLoaded.state, fontLoaded.state]);
 
   const render = () => {
-    if (!imagesLoaded.state || !fontLoaded.state || !data) return <Loader />;
+    if (
+      !imagesLoaded.state ||
+      !fontLoaded.state ||
+      !data.state ||
+      !user.state.InviteId
+    )
+      return <Loader />;
 
     return (
       <motion.div

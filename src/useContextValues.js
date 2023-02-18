@@ -18,7 +18,12 @@ const useContextValues = () => {
   const [imagesLoaded, imageCount] = useImageLoader(imageList);
   const [fontLoaded, fontCount] = useFontLoader(font);
   const [data, setData] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    InviteId: null,
+    name: null,
+    guests: 0,
+    attending: false,
+  });
 
   const values = {
     imagesLoaded: {

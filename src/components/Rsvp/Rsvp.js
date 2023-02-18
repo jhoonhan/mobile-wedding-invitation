@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Rsvp.scss";
+import { AppContext } from "../../App";
+import { updateUser } from "../../actions";
 
 const Rsvp = () => {
+  const { user } = useContext(AppContext);
+  const { InviteId, name, guests, attending } = user.state;
+
+  const [formGuest, setFormGuest] = useState(guests);
+  useEffect(() => {
+    // console.log(attending);
+  }, [attending]);
+
+  const handleChange = (e) => {
+    const inputValue = +e.target.value;
+    setFormGuest(inputValue);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      attending: !attending,
+      guests: formGuest,
+    };
+    const updatedUser = await updateUser(InviteId, formData);
+    user.set(updatedUser.item);
+  };
+
+  useEffect(() => {
+    console.log(user.state);
+  }, [user.state]);
+
   return (
     <section
       id="section--rsvp"
@@ -35,35 +64,51 @@ const Rsvp = () => {
         </div>
       </div>
 
-      <form className="flex--v ">
+      <form className="flex--v" onSubmit={handleSubmit}>
         <div
           className="flex--v animation__opacity-in"
           data-animation-delay="0.7"
           data-animation-sequence="0"
         >
-          <label>Your Name :</label>
-          <input type="number" placeholder="강무환"></input>
+          <label>Invited :</label>
+          <span className="mock-input">{name}</span>
         </div>
 
-        <div
+        {/* <div
           className="flex--v animation__opacity-in"
           data-animation-delay="0.7"
           data-animation-sequence="1"
         >
           <label>Attending :</label>
           <div className="grid--column--2" style={{ gap: "var(--gap--d)" }}>
-            <a className="btn--cta soft">Yes</a>
-            <a className="btn--cta soft">No</a>
+            <a href="#" className={`btn--cta soft ${attending && "active"}`}>
+              Yes
+            </a>
+            <a href="#" className={`btn--cta soft ${!attending && "active"}`}>
+              No
+            </a>
           </div>
-        </div>
+        </div> */}
 
         <div
           className="flex--v animation__opacity-in"
           data-animation-delay="0.7"
           data-animation-sequence="2"
         >
-          <label>Number of Your Guests :</label>
-          <input type="number"></input>
+          <label>Total Attending (Including yourself) :</label>
+          {!attending ? (
+            <input
+              type="number"
+              value={formGuest}
+              onChange={handleChange}
+              onClick={() => {
+                setFormGuest("");
+              }}
+              required
+            ></input>
+          ) : (
+            <span className="mock-input">{formGuest}</span>
+          )}
         </div>
 
         <button
@@ -71,7 +116,7 @@ const Rsvp = () => {
           data-animation-delay="0.7"
           data-animation-sequence="3"
         >
-          Submit
+          {!attending ? "RSVP" : "Cancel RSVP"}
         </button>
       </form>
     </section>

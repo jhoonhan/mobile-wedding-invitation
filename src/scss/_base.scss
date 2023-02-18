@@ -137,7 +137,7 @@ footer {
 }
 
 form {
-  width: 70%;
+  width: auto;
   gap: 2rem;
 
   & button {
@@ -145,14 +145,27 @@ form {
     border: none;
   }
 
-  & input {
+  // & label {
+  //   font-weight: 600;
+  // }
+
+  & input,
+  .mock-input {
     font-family: "Raleway", sans-serif, myeongjo;
+
+    min-height: 3.5rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
     outline: none;
     border: none;
     border-bottom: var(--border);
     border-radius: 0;
     padding: 0.5rem;
+
+    box-sizing: border-box;
   }
 
   & .flex--v {
@@ -242,6 +255,11 @@ form {
   }
 
   &.hard {
+    color: var(--color-font--light);
+    background-color: var(--color--primary);
+  }
+
+  &.active {
     color: var(--color-font--light);
     background-color: var(--color--primary);
   }
