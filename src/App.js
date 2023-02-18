@@ -13,6 +13,8 @@ import Gallery from "./components/Gallery/Gallery";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader";
 
+import { fetchData } from "./actions";
+
 import font from "./assets/NanumMyeongjo.ttf";
 // Home
 import mainImg from "./assets/mainImg2.webp";
@@ -29,6 +31,16 @@ const App = () => {
   // Pre load all data
   const [imagesLoaded, imageCount] = useImageLoader(imageList);
   const [fontLoaded, fontCount] = useFontLoader(font);
+
+  const [fetched, setFetched] = useState(false);
+
+  useEffect(() => {
+    fetchData(setFetched);
+  }, []);
+
+  useEffect(() => {
+    console.log(fetched);
+  }, [fetched]);
 
   useEffect(() => {
     if (imagesLoaded && fontLoaded) animationLibray();
