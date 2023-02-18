@@ -8,7 +8,7 @@ import Loader from "../Loader";
 
 const Rsvp = () => {
   const { user } = useContext(AppContext);
-  const { InviteId, name, guests, attending } = user.state;
+  const { InviteId, name, guests, attending, bujo, noway, en } = user.state;
 
   const [formGuest, setFormGuest] = useState(guests);
   const [loading, setLoading] = useState(false);
@@ -47,6 +47,7 @@ const Rsvp = () => {
   }, [user.state]);
 
   const render = () => {
+    if (noway) return null;
     return (
       <motion.section
         id="section--rsvp"

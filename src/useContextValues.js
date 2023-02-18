@@ -23,6 +23,9 @@ const useContextValues = () => {
     name: 123,
     guests: 1,
     attending: false,
+    en: true,
+    noway: false,
+    bujo: true,
   });
 
   const values = {

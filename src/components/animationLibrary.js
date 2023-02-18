@@ -106,9 +106,6 @@ function animationLibrary() {
       ([entry]) => {
         const intersecting = entry.isIntersecting;
 
-        // const overrideContainer = entry.target.closest(
-        //   "[data-animation-container='true']"
-        // );
         const overrideTagets = overrideContainer
           ? overrideContainer.querySelectorAll(target)
           : [];
