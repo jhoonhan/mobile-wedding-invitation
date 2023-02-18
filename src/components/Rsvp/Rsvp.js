@@ -15,6 +15,7 @@ const Rsvp = () => {
 
   useEffect(() => {
     // console.log(attending);
+    console.log(user);
   }, [attending]);
 
   const handleChange = (e) => {

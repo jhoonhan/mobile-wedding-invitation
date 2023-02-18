@@ -30,7 +30,8 @@ const Info = () => {
             <p className="f2 ">1001 Freeman Mill Rd, Greensboro, NC 27406</p>
           </div>
           <a
-            href="#123"
+            href="https://www.google.com/maps/search/?api=1&query=1001+Freeman+Mill+Rd,+Greensboro,+NC+27406
+            "
             className="btn--cta hard animation__opacity-in"
             data-animation-sequence="2"
             data-animation-delay="0.7"

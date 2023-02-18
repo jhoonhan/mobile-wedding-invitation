@@ -22,7 +22,8 @@ const App = () => {
   const { imagesLoaded, fontLoaded, data, user } = contextValues;
 
   useEffect(() => {
-    const userId = window.location.pathname.slice(1);
+    const param = window.location.pathname.slice(1);
+    const userId = param ? param : "1000";
     const fetch = { data: data.state, setData: data.set };
     fetchData(fetch);
     fetchUser(userId, fetch, user.set);
@@ -42,7 +43,7 @@ const App = () => {
   }, [fontLoaded]);
 
   useEffect(() => {
-    // console.log(user.state);
+    console.log(user.state);
   }, [user.state]);
 
   useEffect(() => {
@@ -50,13 +51,13 @@ const App = () => {
   }, [imagesLoaded.state, fontLoaded.state]);
 
   const render = () => {
-    if (
-      !imagesLoaded.state ||
-      !fontLoaded.state ||
-      !data.state ||
-      !user?.state?.InviteId
-    )
-      return <Loader />;
+    // if (
+    //   !imagesLoaded.state ||
+    //   !fontLoaded.state ||
+    //   !data.state ||
+    //   !user?.state?.InviteId
+    // )
+    //   return <Loader />;
 
     return (
       <motion.div

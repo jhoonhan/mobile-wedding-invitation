@@ -14,7 +14,9 @@ export const fetchData = async ({ data, setData }) => {
 export const fetchUser = async (userId, { fetched, setFetched }, setUser) => {
   try {
     const data = await (
-      await fetch(`http://localhost:3002/api/v1/aws/${userId}`)
+      await fetch(
+        `http://localhost:3002/api/v1/aws/${userId ? userId : "1000"}`
+      )
     ).json();
 
     setUser(data.Item);
