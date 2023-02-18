@@ -1,5 +1,5 @@
 import "./scss/App.scss";
-import { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import animationLibray from "./components/animationLibrary.js";
@@ -13,7 +13,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader";
 
-import { fetchData } from "./actions";
+import { fetchData, fetchUser } from "./actions";
 
 import font from "./assets/NanumMyeongjo.ttf";
 // Home
@@ -24,30 +24,42 @@ import nameCombo from "./assets/nameCombo.svg";
 // Gallery
 import img1 from "./assets/img1.jpg";
 import img2 from "./assets/img2.jpg";
+import useContextValues from "./useContextValues";
 
 const imageList = [mainImg, arrowDown, nameCombo, img1, img2];
 
+export const AppContext = React.createContext();
+
 const App = () => {
   // Pre load all data
+  const contextValues = useContextValues();
   const [imagesLoaded, imageCount] = useImageLoader(imageList);
   const [fontLoaded, fontCount] = useFontLoader(font);
+  const [fetched, setFetched] = useState({ data: false, user: false });
 
-  const [fetched, setFetched] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetchData(setFetched);
+    const userId = window.location.pathname.slice(1);
+    fetchData({ fetched, setFetched });
+    fetchUser(userId, { fetched, setFetched }, setUser);
+    // console.log(contextValues);
   }, []);
 
   useEffect(() => {
-    console.log(fetched);
+    // console.log(fetched);
   }, [fetched]);
+
+  useEffect(() => {
+    // console.log(user);
+  }, [user]);
 
   useEffect(() => {
     if (imagesLoaded && fontLoaded) animationLibray();
   }, [imagesLoaded, fontLoaded]);
 
   const render = () => {
-    if (!imagesLoaded) return <Loader />;
+    if (!imagesLoaded || !fetched) return <Loader />;
 
     return (
       <motion.div
@@ -68,7 +80,9 @@ const App = () => {
       </motion.div>
     );
   };
-  return render();
+  return (
+    <AppContext.Provider value={contextValues}>{render()}</AppContext.Provider>
+  );
 };
 
 export default App;

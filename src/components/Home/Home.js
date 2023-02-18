@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Home.scss";
 import nameCombo from "../../assets/nameCombo.svg";
 import arrowDown from "../../assets/arrow-down.svg";
 import mainImg from "../../assets/mainImg2.webp";
+import { AppContext } from "../../App";
 import Loader from "../Loader";
 
 const Home = () => {
   const height = window.innerHeight;
+  const contextValues = useContext(AppContext);
+
+  useEffect(() => {
+    // console.log(test123);
+  }, []);
 
   // WORK HERE-- make it into resueable custom hook!
 
