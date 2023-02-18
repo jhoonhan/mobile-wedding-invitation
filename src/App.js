@@ -13,6 +13,7 @@ import Loader from "./components/Loader";
 
 import { fetchData, fetchUser, updateUser } from "./actions";
 import useContextValues from "./useContextValues";
+import useReadyToRender from "./useReadyToRender";
 
 export const AppContext = React.createContext();
 
@@ -20,6 +21,7 @@ const App = () => {
   // Pre load all data
   const contextValues = useContextValues();
   const { imagesLoaded, fontLoaded, data, user } = contextValues;
+  const allFetched = useReadyToRender(contextValues);
 
   useEffect(() => {
     const param = window.location.pathname.slice(1);
@@ -47,17 +49,11 @@ const App = () => {
   }, [user.state]);
 
   useEffect(() => {
-    if (imagesLoaded.state && fontLoaded.state) animationLibray();
-  }, [imagesLoaded.state, fontLoaded.state]);
+    if (allFetched) animationLibray();
+  }, [allFetched]);
 
   const render = () => {
-    // if (
-    //   !imagesLoaded.state ||
-    //   !fontLoaded.state ||
-    //   !data.state ||
-    //   !user?.state?.InviteId
-    // )
-    //   return <Loader />;
+    if (!allFetched) return <Loader />;
 
     return (
       <motion.div
