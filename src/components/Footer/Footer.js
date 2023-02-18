@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../App";
-import { updateUser } from "../../actions";
+import { updateMessage } from "../../actions";
 import arrowDown from "../../assets/arrow-down_dark.svg";
 
 import Loader from "../Loader";
@@ -11,17 +11,18 @@ import "./Footer.scss";
 const SUCCESSMSGDATA = "축복 감사합니다. 행복하게 살겠습니다!";
 
 const Footer = () => {
-  const { user } = useContext(AppContext);
-  const { InviteId, name, bujo, message } = user.state;
+  const { user, userMessage } = useContext(AppContext);
+  const { InviteId, name, bujo } = user.state;
+  const userMessageData = userMessage.state.message;
 
-  const [messageData, setMessageData] = useState(message);
+  const [messageData, setMessageData] = useState(userMessageData);
   const [successMsg, setSuccessMsg] = useState(null);
   const [loading, setLoading] = useState(false);
   const [expand, setExpand] = useState(false);
 
   useEffect(() => {
-    setMessageData(message);
-  }, [user.state]);
+    setMessageData(userMessageData);
+  }, [userMessageData]);
 
   const handleChange = (e) => {
     setMessageData(e.target.value);
@@ -30,10 +31,15 @@ const Footer = () => {
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    const formData = { ...user.state, message: messageData };
-    const updatedUser = await updateUser(InviteId, formData);
+    const formData = {
+      Id: user.state.InviteId,
+      InviteId,
+      from: user.state.name,
+      message: messageData,
+    };
+    const updatedUser = await updateMessage(InviteId, formData);
     if (updatedUser.success) {
-      user.set(updatedUser.item);
+      userMessage.set(updatedUser.item);
       setLoading(false);
       setSuccessMsg(SUCCESSMSGDATA);
     }

@@ -28,6 +28,7 @@ const useContextValues = () => {
     bujo: true,
     message: "",
   });
+  const [message, setMessage] = useState("");
 
   const values = {
     imagesLoaded: {
@@ -45,6 +46,10 @@ const useContextValues = () => {
     user: {
       state: user,
       set: setUser,
+    },
+    userMessage: {
+      state: message,
+      set: setMessage,
     },
   };
   return values;

@@ -14,12 +14,8 @@ const Rsvp = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // console.log(guests);
-  }, []);
-
-  useEffect(() => {
     setFormGuest(guests);
-  }, [user.state]);
+  }, [guests]);
 
   const handleChange = (e) => {
     const inputValue = +e.target.value;
@@ -35,17 +31,11 @@ const Rsvp = () => {
       guests: formGuest,
     };
     const updatedUser = await updateUser(InviteId, formData);
-    // console.log(updatedUser.success);
-
     if (updatedUser.success) {
       user.set(updatedUser.item);
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    // console.log(user.state);
-  }, [user.state]);
 
   const render = () => {
     if (noway) return null;

@@ -1,8 +1,9 @@
+const USERURL = "http://localhost:3002/api/v1/aws/user";
+const MESSAGEURL = "http://localhost:3002/api/v1/aws/message";
+
 export const fetchData = async ({ data, setData }) => {
   try {
-    const data = await (
-      await fetch("http://localhost:3002/api/v1/aws/all")
-    ).json();
+    const data = await (await fetch(`${USERURL}/all`)).json();
 
     setData(true);
     return data;
@@ -11,12 +12,10 @@ export const fetchData = async ({ data, setData }) => {
   }
 };
 
-export const fetchUser = async (userId, { fetched, setFetched }, setUser) => {
+export const fetchUser = async (userId, setUser) => {
   try {
     const data = await (
-      await fetch(
-        `http://localhost:3002/api/v1/aws/${userId ? userId : "1000"}`
-      )
+      await fetch(`${USERURL}/${userId ? userId : "1000"}`)
     ).json();
 
     setUser(data.Item);
@@ -36,7 +35,7 @@ export const updateUser = async (userId, body) => {
   try {
     // console.log(body);
     const data = await (
-      await fetch(`http://localhost:3002/api/v1/aws/update/${userId}`, {
+      await fetch(`${USERURL}/update/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -47,6 +46,39 @@ export const updateUser = async (userId, body) => {
     ).json();
 
     return data;
+  } catch (err) {
+    console.err(err);
+  }
+};
+
+export const updateMessage = async (userId, body) => {
+  try {
+    console.log(body);
+    const data = await (
+      await fetch(`${MESSAGEURL}/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      })
+    ).json();
+
+    return data;
+  } catch (err) {
+    console.err(err);
+  }
+};
+
+export const fetchMessage = async (userId, setMessage) => {
+  try {
+    const { Item } = await (
+      await fetch(`${MESSAGEURL}/${userId ? userId : "1000"}`)
+    ).json();
+    if (Item) {
+      setMessage(Item);
+    }
+    return Item;
   } catch (err) {
     console.err(err);
   }

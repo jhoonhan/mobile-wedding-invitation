@@ -11,7 +11,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader";
 
-import { fetchData, fetchUser, updateUser } from "./actions";
+import { fetchData, fetchUser, fetchMessage } from "./actions";
 import useContextValues from "./useContextValues";
 import useReadyToRender from "./useReadyToRender";
 
@@ -20,7 +20,7 @@ export const AppContext = React.createContext();
 const App = () => {
   // Pre load all data
   const contextValues = useContextValues();
-  const { imagesLoaded, fontLoaded, data, user } = contextValues;
+  const { imagesLoaded, fontLoaded, data, user, userMessage } = contextValues;
   const allFetched = useReadyToRender(contextValues);
 
   useEffect(() => {
@@ -28,17 +28,14 @@ const App = () => {
     const userId = param ? param : "1000";
     const fetch = { data: data.state, setData: data.set };
     fetchData(fetch);
-    fetchUser(userId, fetch, user.set);
+    fetchUser(userId, user.set);
+    fetchMessage(userId, userMessage.set);
 
     // updateUser("1234", {
     //   attending: true,
     //   guests: 1020,
     // });
   }, []);
-
-  useEffect(() => {
-    // console.log(data.state);
-  }, [data.state]);
 
   useEffect(() => {
     // console.log(fontLoaded);
