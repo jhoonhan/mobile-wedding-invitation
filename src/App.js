@@ -22,6 +22,7 @@ const App = () => {
   const contextValues = useContextValues();
   const { imagesLoaded, fontLoaded, data, user, userMessage } = contextValues;
   const allFetched = useReadyToRender(contextValues);
+  const en = user.state.en;
 
   useEffect(() => {
     const param = window.location.pathname.slice(1);
@@ -34,10 +35,13 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (allFetched) animationLibray();
+    if (allFetched) {
+      animationLibray();
+    }
   }, [allFetched]);
 
   const render = () => {
+    console.log(user.state.en);
     if (!allFetched) return <Loader />;
 
     return (
@@ -47,8 +51,8 @@ const App = () => {
           <Info />
           <Rsvp />
           <Gallery />
+          <Footer />
         </main>
-        <Footer />
       </div>
     );
   };

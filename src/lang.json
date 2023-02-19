@@ -1,0 +1,23 @@
+{
+  "rsvpDescription": [
+    "Please RSVP for you and your guest",
+    "본인과 본인의 손님 참석여부를 꼭 확인해 주세요"
+  ],
+  "rsvpTotal": ["Total Attending Including Yourself", "본인 포함한 참석인원"],
+  "rsvpInvited": ["Invited", "초대"],
+  "rsvpSubmit": ["RSVP", "참석합니다"],
+  "rsvpCancle": ["Cancle RSVP", "참석 못합니다"],
+  "direction": ["Get Direction", "찾아오시는길"],
+  "blessing": ["Send Blessings", "마음 전하실곳"],
+  "blessingSucess": [
+    "Thank you for your blessing!",
+    "축복 감사합니다. 행복하게 살겠습니다!"
+  ],
+  "bujo": [
+    "Want to send the couple something extra?",
+    "더욱 격렬하게 축복하고 싶으시다고요?"
+  ],
+  "bujoThanks": ["Thank you so much!", "사양하지않고 감사히 받겠습니다"],
+
+  "submit": ["Submit", "보내기"]
+}

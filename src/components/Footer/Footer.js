@@ -154,7 +154,7 @@ const Footer = () => {
             >
               <label>From :</label>
               {name ? (
-                <span className="f2">{name}</span>
+                <span className="">{name}</span>
               ) : (
                 <input
                   type="text"
