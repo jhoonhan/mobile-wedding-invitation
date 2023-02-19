@@ -7,6 +7,9 @@ import mainImg from "../../assets/mainImg2.webp";
 import { AppContext } from "../../App";
 import Loader from "../Loader";
 
+const TOOPACITY = 0.5;
+const TEXTMARGINTOP = "10%";
+
 const Home = ({ readyTorender }) => {
   const height = window.innerHeight;
   const { user, texts } = useContext(AppContext);
@@ -27,6 +30,7 @@ const Home = ({ readyTorender }) => {
           style={{ height: `${height}px` }}
         >
           {/* <div className="home__bg" style={{ height: `${height}px` }} /> */}
+
           <img
             className="home__bg"
             src={mainImg}
@@ -38,7 +42,22 @@ const Home = ({ readyTorender }) => {
             className="home__texts__gradient top"
             style={{ height: `${height / 2}px` }}
           ></div>
-          <div className="home__texts">
+          <div
+            className="home__texts"
+            style={!user.state.name ? { top: TEXTMARGINTOP } : {}}
+          >
+            {user.state.name && (
+              <p
+                className="f2"
+                style={{
+                  color: "white",
+                  fontSize: "var(--font-size--s)",
+                  opacity: TOOPACITY,
+                }}
+              >
+                To : {user.state.name}
+              </p>
+            )}
             <img
               src={nameCombo}
               alt="han J"
