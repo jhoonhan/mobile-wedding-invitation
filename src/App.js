@@ -11,7 +11,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader";
 
-import { fetchData, fetchUser, fetchMessage } from "./actions";
+import { fetchUser, fetchMessage } from "./actions";
 import useContextValues from "./useContextValues";
 import useReadyToRender from "./useReadyToRender";
 
@@ -20,7 +20,8 @@ export const AppContext = React.createContext();
 const App = () => {
   // Pre load all data
   const contextValues = useContextValues();
-  const { imagesLoaded, fontLoaded, data, user, userMessage } = contextValues;
+  const { imagesLoaded, fontLoaded, data, user, userMessage, texts } =
+    contextValues;
   const allFetched = useReadyToRender(contextValues);
   const en = user.state.en;
 
@@ -35,13 +36,10 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (allFetched) {
-      animationLibray();
-    }
+    if (allFetched) animationLibray();
   }, [allFetched]);
 
   const render = () => {
-    console.log(user.state.en);
     if (!allFetched) return <Loader />;
 
     return (

@@ -1,19 +1,26 @@
-import React from "react";
+import { useContext } from "react";
 import "./Info.scss";
 
+import { AppContext } from "../../App";
+
+const ANIMATION_DELAY = 0.7;
+const ANIMATION_THRESHOLD = 1;
+
 const Info = () => {
+  const { user, texts } = useContext(AppContext);
+
   return (
     <section
       id="section--info aang"
       className="flex--v align--cc "
       data-animation-container="true"
-      data-animation-threshold="1"
+      data-animation-threshold={ANIMATION_THRESHOLD}
     >
       <div className="info__text flex--v align--cc " style={{ gap: "4rem" }}>
         <div
           className="flex--v align--cc animation__opacity-in"
           data-animation-sequence="0"
-          data-animation-delay="0.7"
+          data-animation-delay={ANIMATION_DELAY}
         >
           <h1 className="f2 " style={{ fontSize: "5rem" }}>
             04 / 29
@@ -24,7 +31,7 @@ const Info = () => {
           <div
             className="flex--v align--cc animation__opacity-in"
             data-animation-sequence="1"
-            data-animation-delay="0.7"
+            data-animation-delay={ANIMATION_DELAY}
           >
             <p className="f--h2 f2">Salvation Army of Greensboro</p>
             <p className="f2 ">1001 Freeman Mill Rd, Greensboro, NC 27406</p>
@@ -34,9 +41,9 @@ const Info = () => {
             "
             className="btn--cta hard animation__opacity-in"
             data-animation-sequence="2"
-            data-animation-delay="0.7"
+            data-animation-delay={ANIMATION_DELAY}
           >
-            Get Direction
+            {texts.direction[user.state.en]}
           </a>
         </div>
       </div>

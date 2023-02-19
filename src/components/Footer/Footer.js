@@ -9,11 +9,13 @@ import Loader from "../Loader";
 import "./Footer.scss";
 import loveImg from "../../assets/love.jpg";
 
-const SUCCESSMSGDATA = "축복 감사합니다. 행복하게 살겠습니다!";
+const FORMWIDTH = "80%";
+const ANIMATION_DELAY = 1;
+const ANIMATION_THRESHOLD = 0.3;
 
 const Footer = () => {
-  const { user, userMessage } = useContext(AppContext);
-  const { InviteId, name, bujo } = user.state;
+  const { user, userMessage, texts } = useContext(AppContext);
+  const { InviteId, name, bujo, en } = user.state;
   const userMessageData = userMessage.state.message;
   const userMessageName = user.state.name;
 
@@ -48,7 +50,7 @@ const Footer = () => {
     const updatedUser = await updateMessage(InviteId, formData);
     if (updatedUser.success) {
       setLoading(false);
-      setSuccessMsg(SUCCESSMSGDATA);
+      setSuccessMsg(texts.blessingSucess[en]);
     }
   };
 
@@ -61,15 +63,15 @@ const Footer = () => {
     return (
       <div
         className="bujo-box flex--v align--cc animation__opacity-in"
-        data-animation-delay="0.7"
+        data-animation-delay={ANIMATION_DELAY}
         data-animation-sequence="4"
-        style={{ marginTop: "4rem" }}
+        style={{ width: FORMWIDTH, marginTop: "4rem" }}
         onClick={handleExpandClick}
       >
-        <p>더욱 격렬하게 축복하고 싶으시다고요?</p>
+        <p>{texts.bujo[en]}</p>
         <div className="flex--v ">
           <div className="bujo-box__expand flex--h">
-            <p>Expand</p>
+            <p>{texts.expand[en]}</p>
             <img
               src={arrowDown}
               className="icon--arrow"
@@ -91,7 +93,7 @@ const Footer = () => {
             maxHeight: `${expand ? "100vh" : "0px"}`,
           }}
         >
-          <p>사양하지않고 감사히 받겠습니다</p>
+          <p className="f2">{texts.bujoThanks[en]}</p>
           <img src={loveImg} alt="aaang" style={{ width: "100%" }} />
           <div>
             <p>신한 12345123-123-3213123 한정훈</p>
@@ -109,13 +111,13 @@ const Footer = () => {
         id="section--footer"
         className="flex--v align--cc"
         data-animation-container="true"
-        data-animation-threshold="0.5"
+        data-animation-threshold={ANIMATION_THRESHOLD}
       >
         {loading && <Loader />}
 
         <div
           className="animation__text-appear-down flex--v align--cc"
-          data-animation-delay="0.7"
+          data-animation-delay={ANIMATION_DELAY}
         >
           <div className="section__title animation__text-appear-down__hide-box flex--v align--cc">
             <div>
@@ -123,7 +125,7 @@ const Footer = () => {
                 className="animation__text-appear-down__target"
                 data-animation-sequence="0"
               >
-                마음 전하실곳
+                {texts.blessing[en]}
               </h1>
               <div
                 className="section__title-boder animation__expand-right"
@@ -132,18 +134,15 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div
-          className="flex--v align--cc"
-          style={{ width: "80%", gap: "2rem" }}
-        >
+        <div className="flex--v align--cc" style={{ gap: "2rem" }}>
           <form
             className="flex--v"
-            style={{ width: "100%" }}
+            style={{ minWidth: FORMWIDTH }}
             onSubmit={handleSubmit}
           >
             <div
               className="animation__opacity-in"
-              data-animation-delay="0.7"
+              data-animation-delay={ANIMATION_DELAY}
               data-animation-sequence="1"
               style={{
                 display: "grid",
@@ -168,7 +167,7 @@ const Footer = () => {
               onChange={handleChange}
               className="animation__opacity-in"
               value={messageData}
-              data-animation-delay="0.7"
+              data-animation-delay={ANIMATION_DELAY}
               data-animation-sequence="2"
             ></textarea>
             {successMsg && (
@@ -182,11 +181,11 @@ const Footer = () => {
 
             <button
               className="btn--cta hard animation__opacity-in"
-              data-animation-delay="0.7"
+              data-animation-delay={ANIMATION_DELAY}
               data-animation-sequence="3"
               style={{ margin: 0 }}
             >
-              SUBMIT
+              {texts.submit[en]}
             </button>
           </form>
 

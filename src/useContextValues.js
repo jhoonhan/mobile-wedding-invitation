@@ -2,6 +2,8 @@ import { useState } from "react";
 import useImageLoader from "./useImageLoader";
 import useFontLoader from "./useFontLoader";
 
+import lang from "./lang.json";
+
 import font from "./assets/NanumMyeongjo.ttf";
 // Home
 import mainImg from "./assets/mainImg2.webp";
@@ -23,7 +25,7 @@ const useContextValues = () => {
     name: "",
     guests: 0,
     attending: false,
-    en: true,
+    en: 1,
     noway: false,
     bujo: true,
     message: "",
@@ -50,6 +52,9 @@ const useContextValues = () => {
     userMessage: {
       state: message,
       set: setMessage,
+    },
+    texts: {
+      ...lang,
     },
   };
   return values;

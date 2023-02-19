@@ -1,23 +1,25 @@
 {
   "rsvpDescription": [
-    "Please RSVP for you and your guest",
-    "본인과 본인의 손님 참석여부를 꼭 확인해 주세요"
+    "본인과 본인의 손님 참석여부를 꼭 확인해 주세요",
+    "Please RSVP for you and your guest"
   ],
-  "rsvpTotal": ["Total Attending Including Yourself", "본인 포함한 참석인원"],
-  "rsvpInvited": ["Invited", "초대"],
-  "rsvpSubmit": ["RSVP", "참석합니다"],
-  "rsvpCancle": ["Cancle RSVP", "참석 못합니다"],
-  "direction": ["Get Direction", "찾아오시는길"],
-  "blessing": ["Send Blessings", "마음 전하실곳"],
+  "rsvpTotal": ["본인 포함한 참석인원", "Total Attending Including Yourself"],
+  "rsvpInvited": ["초대", "Invited"],
+  "rsvpSubmit": ["참석합니다", "RSVP"],
+  "rsvpCancel": ["참석 못합니다", "Cancle RSVP"],
+  "direction": ["찾아오시는길", "Get Direction"],
+  "blessing": ["마음 전하실곳", "Send Blessings"],
   "blessingSucess": [
-    "Thank you for your blessing!",
-    "축복 감사합니다. 행복하게 살겠습니다!"
+    "축복 감사합니다. 행복하게 살겠습니다!",
+    "Thank you for your blessing!"
   ],
   "bujo": [
-    "Want to send the couple something extra?",
-    "더욱 격렬하게 축복하고 싶으시다고요?"
+    "더욱 격렬하게 축복하고 싶으시다고요?",
+    "Want to send the couple something extra?"
   ],
-  "bujoThanks": ["Thank you so much!", "사양하지않고 감사히 받겠습니다"],
+  "bujoThanks": ["사양하지않고 감사히 받겠습니다", "Thank you so much!"],
 
-  "submit": ["Submit", "보내기"]
+  "submit": ["보내기", "Submit"],
+  "expand": ["자세히", "Expand"],
+  "scrollDown": ["자세히", "Scroll Down"]
 }

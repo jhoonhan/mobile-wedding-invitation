@@ -6,8 +6,12 @@ import { AppContext } from "../../App";
 import { updateUser } from "../../actions";
 import Loader from "../Loader";
 
+const FORMWIDTH = "65%";
+const ANIMATION_DELAY = 1;
+const ANIMATION_THRESHOLD = 0.8;
+
 const Rsvp = () => {
-  const { user } = useContext(AppContext);
+  const { user, texts } = useContext(AppContext);
   const { InviteId, name, guests, attending, bujo, noway, en } = user.state;
 
   const [formGuest, setFormGuest] = useState(guests);
@@ -38,18 +42,18 @@ const Rsvp = () => {
   };
 
   const render = () => {
-    if (noway || InviteId === "0000") return null;
+    if (noway) return null;
     return (
       <motion.section
         id="section--rsvp"
         className="flex--v align--cc"
         data-animation-container="true"
-        data-animation-threshold="0.8"
+        data-animation-threshold={ANIMATION_THRESHOLD}
       >
         {loading && <Loader />}
         <div
           className="animation__text-appear-down flex--v align--cc"
-          data-animation-delay="0.7"
+          data-animation-delay={ANIMATION_DELAY}
         >
           <div className="section__title animation__text-appear-down__hide-box flex--v align--cc">
             <div>
@@ -68,43 +72,31 @@ const Rsvp = () => {
               className="animation__text-appear-down__target"
               data-animation-sequence="1"
             >
-              Please RSVP for you and your guest
+              {texts.rsvpDescription[en]}
             </p>
           </div>
         </div>
 
-        <form className="flex--v" onSubmit={handleSubmit}>
+        <form
+          className="flex--v"
+          onSubmit={handleSubmit}
+          style={{ minWidth: FORMWIDTH }}
+        >
           <div
             className="flex--v animation__opacity-in"
-            data-animation-delay="0.7"
+            data-animation-delay={ANIMATION_DELAY}
             data-animation-sequence="0"
           >
             <label>Invited :</label>
             <span className="mock-input">{name}</span>
           </div>
 
-          {/* <div
-            className="flex--v animation__opacity-in"
-            data-animation-delay="0.7"
-            data-animation-sequence="1"
-          >
-            <label>Attending :</label>
-            <div className="grid--column--2" style={{ gap: "var(--gap--d)" }}>
-              <a href="#" className={`btn--cta soft ${attending && "active"}`}>
-                Yes
-              </a>
-              <a href="#" className={`btn--cta soft ${!attending && "active"}`}>
-                No
-              </a>
-            </div>
-          </div> */}
-
           <div
             className="flex--v animation__opacity-in"
-            data-animation-delay="0.7"
+            data-animation-delay={ANIMATION_DELAY}
             data-animation-sequence="2"
           >
-            <label>Total Attending (Including yourself) :</label>
+            <label>{texts.rsvpTotal[en]} :</label>
             {!attending ? (
               <input
                 type="number"
@@ -122,10 +114,10 @@ const Rsvp = () => {
 
           <button
             className="btn--cta hard animation__opacity-in"
-            data-animation-delay="0.7"
+            data-animation-delay={ANIMATION_DELAY}
             data-animation-sequence="3"
           >
-            {!attending ? "RSVP" : "Cancel RSVP"}
+            {!attending ? texts.rsvpSubmit[en] : texts.rsvpCancel[en]}
           </button>
         </form>
       </motion.section>

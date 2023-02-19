@@ -9,7 +9,7 @@ import Loader from "../Loader";
 
 const Home = ({ readyTorender }) => {
   const height = window.innerHeight;
-  const contextValues = useContext(AppContext);
+  const { user, texts } = useContext(AppContext);
 
   useEffect(() => {
     // console.log(contextValues);
@@ -53,7 +53,7 @@ const Home = ({ readyTorender }) => {
               className="home__texts__scroll-down flex--v align--cc"
               style={{ gap: "1rem" }}
             >
-              <p>Scroll Down</p>
+              <p>{texts.scrollDown[user.state.en]}</p>
               <img
                 src={arrowDown}
                 className="icon--arrow"
