@@ -1,13 +1,12 @@
 import { v1 as uuidv1 } from "uuid";
+import { USER_URL, MESSAGE_URL } from "../config";
 
-const USERURL = "http://192.168.2.6:3002/api/v1/aws/user";
-const MESSAGEURL = "http://192.168.2.6:3002/api/v1/aws/message";
-// const USERURL = "http://localhost:3002/api/v1/aws/user";
-// const MESSAGEURL = "http://localhost:3002/api/v1/aws/message";
+// const USER_URL = "http://localhost:3002/api/v1/aws/user";
+// const MESSAGE_URL = "http://localhost:3002/api/v1/aws/message";
 
 export const fetchData = async ({ data, setData }) => {
   try {
-    const data = await (await fetch(`${USERURL}/all`)).json();
+    const data = await (await fetch(`${USER_URL}/all`)).json();
     console.log(data);
     setData(true);
     return data;
@@ -19,7 +18,7 @@ export const fetchData = async ({ data, setData }) => {
 export const fetchUser = async (userId, setUser) => {
   try {
     const data = await (
-      await fetch(`${USERURL}/${userId ? userId : "1000"}`)
+      await fetch(`${USER_URL}/${userId ? userId : "1000"}`)
     ).json();
 
     setUser(data.Item);
@@ -39,7 +38,7 @@ export const updateUser = async (userId, body) => {
   try {
     // console.log(body);
     const data = await (
-      await fetch(`${USERURL}/update/${userId}`, {
+      await fetch(`${USER_URL}/update/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +66,7 @@ export const updateMessage = async (userId, body) => {
     };
 
     const data = await (
-      await fetch(`${MESSAGEURL}/${userId}`, {
+      await fetch(`${MESSAGE_URL}/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +84,7 @@ export const updateMessage = async (userId, body) => {
 export const fetchMessage = async (userId, setMessage) => {
   try {
     const { Item } = await (
-      await fetch(`${MESSAGEURL}/${userId ? userId : "1000"}`)
+      await fetch(`${MESSAGE_URL}/${userId ? userId : "1000"}`)
     ).json();
     if (Item) {
       setMessage(Item);
