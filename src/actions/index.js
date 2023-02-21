@@ -61,9 +61,7 @@ export const updateUser = async (userId, body) => {
 
 export const updateMessage = async (userId, body) => {
   try {
-    // console.log(uuidv1());
-    const conditionalId = IS_DEFAULT ? uuidv1() : userId;
-    // console.log(conditionalId);
+    const conditionalId = IS_DEFAULT(userId) ? uuidv1() : userId;
     const conditionalBody = {
       ...body,
       Id: conditionalId,
