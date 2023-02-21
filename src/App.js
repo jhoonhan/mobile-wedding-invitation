@@ -23,16 +23,15 @@ const App = () => {
   const { imagesLoaded, fontLoaded, data, user, userMessage, texts } =
     contextValues;
   const allFetched = useReadyToRender(contextValues);
-  const en = user.state.en;
 
   useEffect(() => {
     const param = window.location.pathname.slice(1);
     const userId = param ? param : "1000";
     // const fetch = { data: data.state, setData: data.set };
-    if (param) {
-      fetchUser(userId, user.set);
-      fetchMessage(userId, userMessage.set);
-    }
+    // if (param) {
+    fetchUser(userId, user.set);
+    fetchMessage(userId, userMessage.set);
+    // }
   }, []);
 
   useEffect(() => {

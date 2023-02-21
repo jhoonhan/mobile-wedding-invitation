@@ -3,6 +3,11 @@ import { USER_URL, MESSAGE_URL } from "../config";
 
 // const USER_URL = "http://localhost:3002/api/v1/aws/user";
 // const MESSAGE_URL = "http://localhost:3002/api/v1/aws/message";
+const DEFAULT_IDS = ["1000", "1001", "1000"];
+
+const IS_DEFAULT = (userId) => {
+  return DEFAULT_IDS.includes(userId);
+};
 
 export const fetchData = async ({ data, setData }) => {
   try {
@@ -57,7 +62,7 @@ export const updateUser = async (userId, body) => {
 export const updateMessage = async (userId, body) => {
   try {
     // console.log(uuidv1());
-    const conditionalId = userId === "0000" ? uuidv1() : userId;
+    const conditionalId = IS_DEFAULT ? uuidv1() : userId;
     // console.log(conditionalId);
     const conditionalBody = {
       ...body,

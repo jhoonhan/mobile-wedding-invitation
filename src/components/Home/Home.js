@@ -4,19 +4,21 @@ import "./Home.scss";
 import nameCombo from "../../assets/nameCombo.svg";
 import arrowDown from "../../assets/arrow-down.svg";
 import mainImg from "../../assets/mainImg2.webp";
-import { AppContext } from "../../App";
-import Loader from "../Loader";
+import nameKr1 from "../../assets/name_kr-1.svg";
+import nameKr2 from "../../assets/name_kr-2.svg";
+import nameEn1 from "../../assets/name_en-1.svg";
+import nameEn2 from "../../assets/name_en-2.svg";
 
-const TOOPACITY = 0.5;
-const TEXTMARGINTOP = "10%";
+import { AppContext } from "../../App";
+
+const TEXTMARGINTOP = "12%";
 
 const Home = ({ readyTorender }) => {
-  const height = window.innerHeight;
+  const getHeight = (value) => {
+    return `${window.innerHeight / value}px`;
+  };
   const { user, texts } = useContext(AppContext);
-
-  useEffect(() => {
-    // console.log(contextValues);
-  }, []);
+  const { en } = user.state;
 
   // WORK HERE-- make it into resueable custom hook!
 
@@ -27,20 +29,18 @@ const Home = ({ readyTorender }) => {
         <section
           id="section--home"
           className="flex--v"
-          style={{ height: `${height}px` }}
+          style={{ height: getHeight(1) }}
         >
-          {/* <div className="home__bg" style={{ height: `${height}px` }} /> */}
-
           <img
-            className="home__bg"
+            className="home__bg ani--4"
             src={mainImg}
             alt="main"
-            style={{ height: `${height}px`, width: "100%" }}
+            style={{ height: getHeight(1), width: "100%" }}
             // onLoad={() => setLoaded([...loaded, true])}
           />
           <div
             className="home__texts__gradient top"
-            style={{ height: `${height / 2}px` }}
+            style={{ height: getHeight(2) }}
           ></div>
           <div
             className="home__texts"
@@ -48,28 +48,40 @@ const Home = ({ readyTorender }) => {
           >
             {user.state.name && (
               <p
-                className="f2"
+                className="f2 ani--0"
                 style={{
                   color: "white",
                   fontSize: "var(--font-size--s)",
-                  opacity: TOOPACITY,
                 }}
               >
                 To : {user.state.name}
               </p>
             )}
-            <img
-              src={nameCombo}
-              alt="han J"
-              style={{ height: `${height / 4}px` }}
-            />
+            <div
+              className="home__texts__heading flex--v align--cc"
+              style={{ gap: getHeight(20) }}
+            >
+              <img
+                src={en ? nameEn1 : nameKr1}
+                className="ani--1"
+                alt="name kr 1"
+                style={{ height: getHeight(en ? 14 : 10) }}
+              />
+              <span className="border ani--2" />
+              <img
+                src={en ? nameEn2 : nameKr2}
+                className="ani--3"
+                alt="name kr 2"
+                style={{ height: getHeight(en ? 22 : 18) }}
+              />
+            </div>
           </div>
           <div
-            className="home__texts__gradient bottom"
-            style={{ height: `${height / 10}px` }}
+            className="home__texts__gradient bottom ani--5"
+            style={{ height: getHeight(10) }}
           >
             <div
-              className="home__texts__scroll-down flex--v align--cc"
+              className="home__texts__scroll-down flex--v align--cc "
               style={{ gap: "1rem" }}
             >
               <p>{texts.scrollDown[user.state.en]}</p>

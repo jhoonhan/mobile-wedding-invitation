@@ -25,8 +25,8 @@ const useContextValues = () => {
     name: "",
     guests: 0,
     attending: false,
-    en: 1,
-    noway: false,
+    en: 0,
+    noway: true,
     bujo: true,
     message: "",
   });

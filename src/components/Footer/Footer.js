@@ -93,8 +93,8 @@ const Footer = () => {
             maxHeight: `${expand ? "100vh" : "0px"}`,
           }}
         >
-          <p className="f2">{texts.bujoThanks[en]}</p>
           <img src={loveImg} alt="aaang" style={{ width: "100%" }} />
+          <p className="f2">{texts.bujoThanks[en]}</p>
           <div>
             <p>신한 12345123-123-3213123 한정훈</p>
             <p>농협 12345123-123-3213123 김예원</p>

@@ -13,7 +13,15 @@ $main-test-top-margin: 6%;
     opacity: 0;
   }
   to {
-    opacity: 1;
+    opacity: 0.5;
+  }
+}
+@keyframes focus-in {
+  from {
+    filter: blur(10px);
+  }
+  to {
+    filter: blur(0);
   }
 }
 @keyframes arrow {
@@ -27,6 +35,13 @@ $main-test-top-margin: 6%;
     transform: translateY(0px);
   }
 }
+@mixin ani($delay) {
+  opacity: 0;
+  animation-name: opacityin;
+  animation-duration: 1s;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
+}
 
 #section--home {
   position: relative;
@@ -36,6 +51,8 @@ $main-test-top-margin: 6%;
 
   justify-content: flex-start;
   align-items: center;
+
+  background-color: var(--color--primary);
 
   animation-name: opacityin;
   animation-duration: 2s;
@@ -112,15 +129,16 @@ $main-test-top-margin: 6%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    opacity: 0;
+    // opacity: 0;
 
-    animation-name: opacityin2;
-    animation-duration: 1s;
-    animation-delay: 2s;
-    animation-fill-mode: forwards;
+    // animation-name: opacityin2;
+    // animation-duration: 1s;
+    // animation-delay: 2s;
+    // animation-fill-mode: forwards;
+
     & img {
       // width: 45%;
-      height: 25vh;
+      // height: 25vh;
       display: flex;
       justify-content: center;
       // min-height: 500px;
@@ -136,5 +154,38 @@ $main-test-top-margin: 6%;
     & span:nth-of-type(4n) {
       font-size: 1.8rem;
     }
+    & .home__texts__heading {
+      & .border {
+        width: 25%;
+        border-bottom: 1px solid var(--color-font--light);
+      }
+    }
+  }
+  .ani--0 {
+    opacity: 0;
+    animation-name: opacityin2;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  .ani--1 {
+    // background-color: red;
+    @include ani(2s);
+  }
+  .ani--2 {
+    @include ani(2.5s);
+  }
+  .ani--3 {
+    @include ani(3s);
+  }
+  .ani--4 {
+    opacity: 0;
+    animation-name: opacityin;
+    animation-duration: 2s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+  }
+  .ani--5 {
+    @include ani(5s);
   }
 }
