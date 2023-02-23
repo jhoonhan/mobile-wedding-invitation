@@ -31,6 +31,7 @@ const useContextValues = () => {
     message: "",
   });
   const [message, setMessage] = useState("");
+  const [mainBgColor, setMainBgColor] = useState("#efefef");
 
   const values = {
     imagesLoaded: {
@@ -55,6 +56,10 @@ const useContextValues = () => {
     },
     texts: {
       ...lang,
+    },
+    mainBgColor: {
+      state: mainBgColor,
+      set: setMainBgColor,
     },
   };
   return values;

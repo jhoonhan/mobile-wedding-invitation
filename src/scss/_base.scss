@@ -20,22 +20,23 @@ body {
   background-repeat: repeat;
   background-position: center center;
   background-blend-mode: difference;
-  background-color: #efefef;
+  background-color: var(--color-background);
 
   // overflow-y: hidden;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
+.f0 {
+  font-family: Helvetica, Arial, sans-serif;
+}
 .f2 {
   font-family: myeongjo;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5 {
+h3 {
   font-weight: normal;
   letter-spacing: 0.1rem;
 }
@@ -53,6 +54,15 @@ h2,
 h3,
 .f--h3 {
   font-size: var(--font-size--m);
+}
+h4,
+.f--h4 {
+  font-size: var(--font-size--d);
+
+  &.subheader {
+    border-bottom: 1px solid var(--color--primary);
+    padding-bottom: 0.15rem;
+  }
 }
 
 a {
@@ -103,24 +113,17 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 
     & h1 {
       font-weight: bold;
       font-family: var(--font--2);
-
-      // &::after {
-      //   content: "";
-      //   position: relative;
-      //   display: flex;
-      //   width: 100%;
-      //   border-bottom: 1px solid var(--color--primary);
-      // }
     }
 
     & .section__title-boder {
       width: 100%;
       // border-b
+      margin-top: 0.2rem;
       border-bottom: 1px solid var(--color--primary);
     }
   }

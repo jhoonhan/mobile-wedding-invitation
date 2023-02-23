@@ -21,5 +21,6 @@
 
   "submit": ["보내기", "Submit"],
   "expand": ["자세히", "Expand"],
-  "scrollDown": ["자세히", "Scroll Down"]
+  "scrollDown": ["자세히", "Scroll Down"],
+  "contact": ["Contact", "Contact"]
 }

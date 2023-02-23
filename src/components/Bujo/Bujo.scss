@@ -12,7 +12,7 @@
     width: 0%;
   }
 }
-footer {
+#section--bujo {
   & .bujo-box {
     gap: 2rem;
 
@@ -35,6 +35,30 @@ footer {
       margin-top: 2rem;
       overflow: hidden;
       transition: max-height 1s ease-in-out, opacity 0.3s ease-in-out;
+
+      & .bujo-box__accounts {
+        margin-top: 2rem;
+        gap: 3rem;
+        & div.account {
+          gap: 1.7rem;
+
+          & .account__grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            align-items: center;
+            justify-items: flex-start;
+            column-gap: 1.2rem;
+            // row-gap: 0.5rem;
+
+            & span {
+              & img {
+                height: 2rem;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

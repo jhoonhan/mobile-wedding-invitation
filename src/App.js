@@ -8,8 +8,9 @@ import Home from "./components/Home/Home";
 import Info from "./components/Info/Info";
 import Rsvp from "./components/Rsvp/Rsvp";
 import Gallery from "./components/Gallery/Gallery";
-import Footer from "./components/Footer/Footer";
+import Bujo from "./components/Bujo/Bujo";
 import Loader from "./components/Loader";
+import Contact from "./components/Contact/Contact";
 
 import { fetchUser, fetchMessage } from "./actions";
 import useContextValues from "./useContextValues";
@@ -20,8 +21,15 @@ export const AppContext = React.createContext();
 const App = () => {
   // Pre load all data
   const contextValues = useContextValues();
-  const { imagesLoaded, fontLoaded, data, user, userMessage, texts } =
-    contextValues;
+  const {
+    imagesLoaded,
+    fontLoaded,
+    data,
+    user,
+    userMessage,
+    texts,
+    mainBgColor,
+  } = contextValues;
   const allFetched = useReadyToRender(contextValues);
 
   useEffect(() => {
@@ -42,13 +50,14 @@ const App = () => {
     if (!allFetched) return <Loader />;
 
     return (
-      <div className="App flex--v align--cc" key="section--home">
+      <div className="App flex--v align--cc">
         <main className="flex--v align--cc">
           <Home readyTorender={allFetched} />
           <Info />
           <Rsvp />
           <Gallery />
-          <Footer />
+          <Bujo />
+          <Contact />
         </main>
       </div>
     );
