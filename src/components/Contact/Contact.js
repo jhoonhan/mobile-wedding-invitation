@@ -9,7 +9,7 @@ const ANIMATION_THRESHOLD = 0.8;
 
 const Contact = () => {
   const { user, texts } = useContext(AppContext);
-  const { InviteId, name, guests, attending, bujo, noway, en } = user.state;
+  const { en } = user.state;
 
   const render = () => {
     return (
@@ -29,7 +29,7 @@ const Contact = () => {
                 className="animation__text-appear-down__target"
                 data-animation-sequence="0"
               >
-                연락처
+                {texts.contact[en]}
               </h1>
               <div
                 className="section__title-boder animation__expand-right"
@@ -40,31 +40,29 @@ const Contact = () => {
           <div className="section__content flex--v">
             <div className="contact__info-section flex--v align--cc">
               <div className="contact__info-grid">
-                <p>한정훈</p>
+                <p>{texts.nameGroom[en]}</p>
                 <p>|</p>
-                <p className="f0">312 810 8989</p>
-
-                <p>한현구</p>
+                <p className={en ? "f2" : "f0"}>312 810 8989</p>
+                <p>{texts.nameGroomF[en]}</p>
                 <p>|</p>
-                <p className="f0">336 454 9736</p>
-
-                <p>강무환</p>
+                <p className={en ? "f2" : "f0"}>336 454 9736</p>
+                <p>{texts.nameGroomM[en]}</p>
                 <p>|</p>
-                <p className="f0">336 875 2193</p>
-              </div>
-            </div>
-
-            <div className="contact__info-section flex--v align--cc">
-              <div className="contact__info-grid">
-                <p>김에원</p>
+                <p
+                  className={en ? "f2" : "f0"}
+                  style={{ marginBottom: "2rem" }}
+                >
+                  336 875 2193
+                </p>
+                <p>{texts.nameBride[en]}</p>
                 <p>|</p>
-                <p className="f0">850 812 9071</p>
-                <p>김정수</p>
+                <p className={en ? "f2" : "f0"}>850 812 9071</p>
+                <p>{texts.nameBrideF[en]}</p>
                 <p>|</p>
-                <p className="f0">010 7997 6617</p>
-                <p>정정희</p>
+                <p className={en ? "f2" : "f0"}>010 7997 6617</p>
+                <p>{texts.nameBrideM[en]}</p>
                 <p>|</p>
-                <p className="f0">010 7997 6617</p>
+                <p className={en ? "f2" : "f0"}>010 7997 6617</p>
               </div>
             </div>
           </div>

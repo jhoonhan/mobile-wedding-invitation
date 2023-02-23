@@ -129,14 +129,12 @@ const Bujo = () => {
               <div className="account__grid">
                 <p>김정수</p>
                 <p>|</p>
-
                 <p>
                   기업 <span className="f0">147-108644-01-011</span>
                 </p>
                 {AccountNumberCopy(14710864401011)}
                 <p>정정희</p>
                 <p>|</p>
-
                 <p>
                   국민 <span className="f0">830501-04-148513</span>
                 </p>
@@ -159,7 +157,6 @@ const Bujo = () => {
         data-animation-threshold={ANIMATION_THRESHOLD}
       >
         {loading && <Loader />}
-
         <div
           className="animation__text-appear-down flex--v align--cc"
           data-animation-delay={ANIMATION_DELAY}

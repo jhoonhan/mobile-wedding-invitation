@@ -22,5 +22,11 @@
   "submit": ["보내기", "Submit"],
   "expand": ["자세히", "Expand"],
   "scrollDown": ["자세히", "Scroll Down"],
-  "contact": ["Contact", "Contact"]
+  "contact": ["Contact", "Contact"],
+  "nameGroom": ["한정훈", "Junghoon Han"],
+  "nameGroomF": ["한현구", "Hyungoo Han"],
+  "nameGroomM": ["강무환", "Mohwan Kang"],
+  "nameBride": ["김예원", "Yeweon Kim"],
+  "nameBrideF": ["김정수", "Jeongsoo Kim"],
+  "nameBrideM": ["정정희", "Jeonghee Jeong"]
 }
