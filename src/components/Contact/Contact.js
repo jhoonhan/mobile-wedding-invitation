@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./Contact.scss";
 import { AppContext } from "../../App";
 
-const ANIMATION_DELAY = 1;
+const ANIMATION_DELAY = 0.5;
 const ANIMATION_THRESHOLD = 0.8;
 
 const Contact = () => {
@@ -37,7 +37,11 @@ const Contact = () => {
               />
             </div>
           </div>
-          <div className="section__content flex--v">
+          <div
+            className="section__content flex--v animation__opacity-in"
+            data-animation-delay={ANIMATION_DELAY}
+            data-animation-sequence="4"
+          >
             <div className="contact__info-section flex--v align--cc">
               <div className="contact__info-grid">
                 <p>{texts.nameGroom[en]}</p>

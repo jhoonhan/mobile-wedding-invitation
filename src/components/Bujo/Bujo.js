@@ -11,7 +11,7 @@ import "./Bujo.scss";
 import loveImg from "../../assets/love.jpg";
 
 const FORMWIDTH = "80%";
-const ANIMATION_DELAY = 1;
+const ANIMATION_DELAY = 0.7;
 const ANIMATION_THRESHOLD = 0.3;
 
 const Bujo = () => {
