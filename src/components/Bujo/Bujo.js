@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../App";
 import { updateMessage } from "../../actions";
@@ -25,6 +25,8 @@ const Bujo = () => {
   const [successMsg, setSuccessMsg] = useState(null);
   const [loading, setLoading] = useState(false);
   const [expand, setExpand] = useState(false);
+
+  const bujoHideBox = useRef(null);
 
   useEffect(() => {
     setMessageData(userMessageData);
@@ -55,6 +57,9 @@ const Bujo = () => {
   };
 
   const handleExpandClick = (e) => {
+    if (!expand) {
+      bujoHideBox.current.scrollIntoView();
+    }
     setExpand(!expand);
   };
 
@@ -125,6 +130,7 @@ const Bujo = () => {
         data-animation-delay={ANIMATION_DELAY}
         data-animation-sequence="4"
         style={{ minWidth: FORMWIDTH, marginTop: "4rem" }}
+        ref={bujoHideBox}
       >
         <p>{texts.bujo[en]}</p>
         {!bujoDefault && (
@@ -145,7 +151,7 @@ const Bujo = () => {
                 }}
               />
             </div>
-            <div className="bujo-box__expand__border" />
+            <div className="expanding-border" />
           </div>
         )}
         <div
