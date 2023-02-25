@@ -9,6 +9,11 @@ const IS_DEFAULT = (userId) => {
   return DEFAULT_IDS.includes(userId);
 };
 
+const validateUser = (queryPw, userPw) => {
+  if (queryPw !== userPw) return false;
+  return true;
+};
+
 export const fetchData = async ({ data, setData }) => {
   try {
     const data = await (await fetch(`${USER_URL}/all`)).json();
@@ -27,6 +32,7 @@ export const fetchUser = async ({ userId, queryPw }, setUser) => {
 
     const userData = data.Item;
     console.log(userData);
+    console.log(queryPw);
 
     setUser(data.Item);
     return data;
