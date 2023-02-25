@@ -12,7 +12,6 @@ const IS_DEFAULT = (userId) => {
 export const fetchData = async ({ data, setData }) => {
   try {
     const data = await (await fetch(`${USER_URL}/all`)).json();
-    console.log(data);
     setData(true);
     return data;
   } catch (error) {
@@ -20,7 +19,7 @@ export const fetchData = async ({ data, setData }) => {
   }
 };
 
-export const fetchUser = async (userId, setUser) => {
+export const fetchUser = async ({ userId, userPw }, setUser) => {
   try {
     const data = await (
       await fetch(`${USER_URL}/${userId ? userId : "1000"}`)
