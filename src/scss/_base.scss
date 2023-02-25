@@ -276,6 +276,12 @@ form {
     color: var(--color-font--light);
     background-color: var(--color--primary);
   }
+
+  &.inactive {
+    color: var(--color-font--light);
+    background-color: var(--color--gray);
+    // background-color: red;
+  }
 }
 
 // Loader

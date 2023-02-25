@@ -32,9 +32,18 @@
       animation-iteration-count: infinite;
     }
     & .bujo-box__hidebox {
+      gap: 2rem;
+
       margin-top: 2rem;
       overflow: hidden;
       transition: max-height 1s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 1;
+      max-height: 100vh;
+
+      &.hidden {
+        opacity: 0;
+        max-height: 0px;
+      }
 
       & .bujo-box__accounts {
         margin-top: 2rem;

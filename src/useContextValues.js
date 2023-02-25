@@ -48,7 +48,10 @@ const useContextValues = () => {
     en: 0,
     noway: true,
     bujo: true,
+    bujoDefault: true,
     message: "",
+    maxAllowed: 0,
+    registry: false,
   });
   const [message, setMessage] = useState("");
   const [mainBgColor, setMainBgColor] = useState("#efefef");

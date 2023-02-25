@@ -6,15 +6,17 @@ import { AppContext } from "../../App";
 import { updateUser } from "../../actions";
 import Loader from "../Loader";
 
-const FORMWIDTH = "65%";
+const FORMWIDTH = "70%";
 const ANIMATION_DELAY = 1;
 const ANIMATION_THRESHOLD = 0.8;
 
 const Rsvp = () => {
   const { user, texts } = useContext(AppContext);
-  const { InviteId, name, guests, attending, bujo, noway, en } = user.state;
+  const { InviteId, name, guests, maxAllowed, attending, bujo, noway, en } =
+    user.state;
 
   const [formGuest, setFormGuest] = useState(guests);
+  const [maxAlert, setMaxAlert] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,12 +25,18 @@ const Rsvp = () => {
 
   const handleChange = (e) => {
     const inputValue = +e.target.value;
+    if (inputValue > maxAllowed) {
+      setMaxAlert(true);
+    } else {
+      setMaxAlert(false);
+    }
     setFormGuest(inputValue);
   };
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
+    if (maxAlert || formGuest === 0) return;
+    setLoading(true);
     const formData = {
       ...user.state,
       attending: !attending,
@@ -80,7 +88,7 @@ const Rsvp = () => {
         <form
           className="flex--v"
           onSubmit={handleSubmit}
-          style={{ minWidth: FORMWIDTH }}
+          style={{ width: FORMWIDTH }}
         >
           <div
             className="flex--v animation__opacity-in"
@@ -99,7 +107,7 @@ const Rsvp = () => {
             <label>{texts.rsvpTotal[en]} :</label>
             {!attending ? (
               <input
-                type="number"
+                type="text"
                 value={formGuest}
                 onChange={handleChange}
                 onClick={() => {
@@ -111,9 +119,16 @@ const Rsvp = () => {
               <span className="mock-input">{formGuest}</span>
             )}
           </div>
+          {maxAlert && (
+            <p style={{ textAlign: "center", whiteSpace: "pre-line" }}>
+              {texts.rsvpUninvited[en]}
+            </p>
+          )}
 
           <button
-            className="btn--cta hard animation__opacity-in"
+            className={`btn--cta ${
+              maxAlert || formGuest === 0 ? "inactive" : "hard"
+            } animation__opacity-in`}
             data-animation-delay={ANIMATION_DELAY}
             data-animation-sequence="3"
           >

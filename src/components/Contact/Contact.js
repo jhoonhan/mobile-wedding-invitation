@@ -5,7 +5,7 @@ import "./Contact.scss";
 import { AppContext } from "../../App";
 
 const ANIMATION_DELAY = 0.5;
-const ANIMATION_THRESHOLD = 0.8;
+const ANIMATION_THRESHOLD = 0.7;
 
 const Contact = () => {
   const { user, texts } = useContext(AppContext);
@@ -63,7 +63,7 @@ const Contact = () => {
                 <p className={en ? "f2" : "f0"}>850 812 9071</p>
                 <p>{texts.nameBrideF[en]}</p>
                 <p>|</p>
-                <p className={en ? "f2" : "f0"}>010 7997 6617</p>
+                <p className={en ? "f2" : "f0"}>010 2268 6617</p>
                 <p>{texts.nameBrideM[en]}</p>
                 <p>|</p>
                 <p className={en ? "f2" : "f0"}>010 7997 6617</p>

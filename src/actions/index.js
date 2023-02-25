@@ -31,16 +31,19 @@ export const fetchUser = async ({ userId, queryPw }, setUser) => {
     ).json();
 
     const userData = data.Item;
-    const validated = validateUser(userData.userPw, +queryPw);
-    if (!validated) {
-      console.log(validated);
-      throw new Error("Validation failed");
+    console.log(userData);
+    if (!queryPw) {
+      throw new Error("Password missing");
     }
 
+    const validated = validateUser(userData.userPw, +queryPw);
+    if (!validated) {
+      throw new Error("Validation failed");
+    }
     setUser(data.Item);
     return data;
   } catch (err) {
-    console.err(err);
+    console.error(err);
   }
 };
 

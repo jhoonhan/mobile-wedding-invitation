@@ -7,6 +7,11 @@
   "rsvpInvited": ["초대", "Invited"],
   "rsvpSubmit": ["참석합니다", "RSVP"],
   "rsvpCancel": ["참석 못합니다", "Cancle RSVP"],
+  "rsvpUninvited": [
+    "초대받지 못한 손님과\n동반하고 싶으시면 꼭 연락해주세요",
+    "If you wish to bring uninvited guests,\nplease let us know asap."
+  ],
+
   "direction": ["찾아오시는길", "Get Direction"],
   "blessing": ["마음 전하실곳", "Send Blessings"],
   "blessingSucess": [
@@ -15,7 +20,7 @@
   ],
   "bujo": [
     "더욱 격렬하게 축복하고 싶으시다고요?",
-    "Want to send the couple something extra?"
+    "Want to get the couple something extra?"
   ],
   "bujoThanks": ["감사합니다!", "Thank you so much!"],
 
