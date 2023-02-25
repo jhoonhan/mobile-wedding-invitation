@@ -40,7 +40,7 @@ const App = () => {
 
   useEffect(() => {
     // const param = window.location.pathname.slice(1);
-    const userId = queryId ? queryId : "1000";
+    const userId = queryId ? queryId : 1000;
     // const fetch = { data: data.state, setData: data.set };
     // if (param) {
     fetchUser({ userId, queryPw }, user.set);
