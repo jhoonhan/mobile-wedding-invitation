@@ -1,7 +1,6 @@
 const aws = require("aws-sdk");
 const XLSX = require("xlsx");
 const s3 = new aws.S3({ apiVersion: "2006-03-01" });
-const mockFile = require("./guestList_YeWeon.xlsx");
 
 const upload = async (bucket, key, convertedJson) => {
   const newKey = key.replace(".xlsx", ".json");
@@ -21,6 +20,7 @@ const upload = async (bucket, key, convertedJson) => {
 };
 
 const getFile = async (bucket, key) => {
+  // const s3Object = await s3.getObject({ Bucket: bucket, Key: key }).promise();
   const s3Object = await s3.getObject({ Bucket: bucket, Key: key }).promise();
   const file = XLSX.read(s3Object.Body, { type: "buffer" });
 
@@ -34,16 +34,23 @@ const convert = (file) => {
 };
 
 exports.handler = async (event, context) => {
-  const bucket = event.Records[0].s3.bucket.name;
+  // const bucket = event.Records[0].s3.bucket.name;
+  const bucket = "xlsxtojson";
+
   const key = event.Records[0].s3.object.key;
+  // const key = `guestList_YeWeon.xlsx`;
   console.log(`#### BUCKET : ${bucket}`);
   console.log(`#### KEY : ${key}`);
 
   try {
     const file = await getFile(bucket, key);
+
     console.log(`#### FILE : ${file}`);
     const convertedJson = convert(file);
-    return await upload(bucket, key, convertedJson);
+    console.log(convertedJson);
+    // const convertedJson = convert(mockFile);
+    // return await upload(bucket, key, convertedJson);
+    return `aaang`;
   } catch (error) {
     console.error(error);
     return { statusCode: 500, body: error.message };
