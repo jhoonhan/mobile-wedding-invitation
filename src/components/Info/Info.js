@@ -25,7 +25,7 @@ const Info = () => {
           <h1 className="f2 " style={{ fontSize: "5rem" }}>
             04 / 29
           </h1>
-          <h2 className="f2 f--bold ">5:30PM EDT</h2>
+          <h2 className="f2 f--bold ">5:00PM EDT</h2>
         </div>
         <div className="flex--v align--cc " style={{ gap: "2rem" }}>
           <div

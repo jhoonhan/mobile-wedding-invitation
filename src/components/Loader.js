@@ -11,14 +11,7 @@ const Loader = () => {
       exit={{ opacity: 0 }}
       transition={{ ease: "easeOut", duration: 1 }}
     >
-      <div className="lds-roller">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div className="lds-heart">
         <div></div>
       </div>
     </motion.div>
