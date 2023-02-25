@@ -1,0 +1,17 @@
+{
+  "name": "aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -e \"(async () => console.log(await require('./index').handler({})))();\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1313.0",
+    "csvtojson": "^2.0.10",
+    "fs": "^0.0.1-security",
+    "xlsx": "^0.18.5"
+  }
+}
