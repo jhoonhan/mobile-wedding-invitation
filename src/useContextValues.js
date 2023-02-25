@@ -7,22 +7,37 @@ import lang from "./lang.json";
 import font from "./assets/NanumMyeongjo.ttf";
 // Home
 import mainImg from "./assets/mainImg2.webp";
+import nameKr1 from "./assets/name_kr-1.svg";
+import nameKr2 from "./assets/name_kr-2.svg";
+import nameEn1 from "./assets/name_en-1.svg";
+import nameEn2 from "./assets/name_en-2.svg";
+
+// Icons
 import arrowDown from "./assets/arrow-down.svg";
-import nameCombo from "./assets/nameCombo.svg";
+import arrowDownDark from "./assets/arrow-down_dark.svg";
+import copyIcon from "./assets/copy.svg";
 
 // Gallery
-import img0 from "./assets/gallery/img-0.jpg";
-import img1 from "./assets/gallery/img-1.jpg";
-import img2 from "./assets/gallery/img-2.jpg";
-import img3 from "./assets/gallery/img-3.jpg";
-import img4 from "./assets/gallery/img-4.jpg";
-import img5 from "./assets/gallery/img-5.jpg";
+import img0 from "./assets/gallery/img-0.webp";
+import img1 from "./assets/gallery/img-1.webp";
+import img2 from "./assets/gallery/img-2.webp";
+import img3 from "./assets/gallery/img-3.webp";
+import img4 from "./assets/gallery/img-4.webp";
+import img5 from "./assets/gallery/img-5.webp";
+
+// Misc
+import loveImg from "./assets/love.webp";
+
+const homeList = [mainImg, nameKr1, nameKr2, nameEn1, nameEn2];
 
 const galleryList = [img0, img1, img2, img3, img4, img5];
-const imageList = [mainImg, arrowDown, nameCombo, ...galleryList];
+const imageList = [loveImg];
+const iconList = [arrowDown, arrowDownDark, copyIcon];
+
+const imageLoadList = [...homeList, ...galleryList, ...imageList, ...iconList];
 
 const useContextValues = () => {
-  const [imagesLoaded, imageCount] = useImageLoader(imageList);
+  const [imagesLoaded, imageCount] = useImageLoader(imageLoadList);
   const [fontLoaded, fontCount] = useFontLoader(font);
   const [data, setData] = useState(false);
   const [user, setUser] = useState({
@@ -67,6 +82,8 @@ const useContextValues = () => {
       set: setMainBgColor,
     },
     gallery: galleryList,
+    images: imageList,
+    icons: iconList,
   };
   return values;
 };

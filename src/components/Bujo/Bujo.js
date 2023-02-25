@@ -2,20 +2,19 @@ import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../App";
 import { updateMessage } from "../../actions";
-import arrowDown from "../../assets/arrow-down_dark.svg";
-import copyIcon from "../../assets/copy.svg";
 
 import Loader from "../Loader";
 
+import loveImg from "../../assets/love.webp";
+
 import "./Bujo.scss";
-import loveImg from "../../assets/love.png";
 
 const FORMWIDTH = "80%";
 const ANIMATION_DELAY = 0.7;
 const ANIMATION_THRESHOLD = 0.3;
 
 const Bujo = () => {
-  const { user, userMessage, texts } = useContext(AppContext);
+  const { user, userMessage, texts, icons } = useContext(AppContext);
   const { InviteId, name, bujo, en } = user.state;
   const userMessageData = userMessage.state.message;
   const userMessageName = user.state.name;
@@ -75,7 +74,7 @@ const Bujo = () => {
           onClick={copyAccount}
           data-account-number={accountNumber}
         >
-          <img src={copyIcon} alt="Copy Icon" />
+          <img src={icons[2]} alt="Copy Icon" />
         </span>
       );
     };
@@ -92,7 +91,7 @@ const Bujo = () => {
           <div className="bujo-box__expand flex--h" onClick={handleExpandClick}>
             <p>{texts.expand[en]}</p>
             <img
-              src={arrowDown}
+              src={icons[1]}
               className="icon--arrow"
               alt="down arrow"
               style={{
