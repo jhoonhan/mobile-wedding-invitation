@@ -19,11 +19,14 @@ export const fetchData = async ({ data, setData }) => {
   }
 };
 
-export const fetchUser = async ({ userId, userPw }, setUser) => {
+export const fetchUser = async ({ userId, queryPw }, setUser) => {
   try {
     const data = await (
       await fetch(`${USER_URL}/${userId ? userId : "1000"}`)
     ).json();
+
+    const userData = data.Item;
+    console.log(userData);
 
     setUser(data.Item);
     return data;

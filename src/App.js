@@ -43,7 +43,7 @@ const App = () => {
     const userId = queryId ? queryId : "1000";
     // const fetch = { data: data.state, setData: data.set };
     // if (param) {
-    fetchUser({ userId, userPw: queryPw }, user.set);
+    fetchUser({ userId, queryPw }, user.set);
     fetchMessage(userId, userMessage.set);
     // }
   }, []);
