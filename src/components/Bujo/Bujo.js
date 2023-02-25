@@ -58,7 +58,7 @@ const Bujo = () => {
 
   const handleExpandClick = (e) => {
     if (!expand) {
-      bujoHideBox.current.scrollIntoView();
+      bujoHideBox.current.scrollIntoView({ behavior: "smooth" });
     }
     setExpand(!expand);
   };
