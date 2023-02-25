@@ -1,6 +1,7 @@
 const aws = require("aws-sdk");
 const XLSX = require("xlsx");
 const s3 = new aws.S3({ apiVersion: "2006-03-01" });
+const mockFile = require("./guestList_YeWeon.xlsx");
 
 const upload = async (bucket, key, convertedJson) => {
   const newKey = key.replace(".xlsx", ".json");
