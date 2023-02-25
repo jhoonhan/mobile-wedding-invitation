@@ -1,13 +1,17 @@
-import React from "react";
-import "./Gallery.scss";
-import img1 from "../../assets/img1.jpg";
-import img2 from "../../assets/img2.jpg";
+import { useContext } from "react";
+import { AppContext } from "../../App";
 
-const imageList = [img1, img2, img1, img2];
+import "./Gallery.scss";
+// import img1 from "../../assets/img1.jpg";
+// import img2 from "../../assets/img2.jpg";
+
+// const imageList = [img1, img2, img1, img2];
 
 const Gallery = () => {
+  const { gallery } = useContext(AppContext);
+
   const renderImages = () => {
-    const images = imageList.map((img, i) => {
+    const images = gallery.map((img, i) => {
       return (
         <div
           className="gallery__img animation__opacity-in"

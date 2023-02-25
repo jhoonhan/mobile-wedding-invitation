@@ -8,7 +8,7 @@ import copyIcon from "../../assets/copy.svg";
 import Loader from "../Loader";
 
 import "./Bujo.scss";
-import loveImg from "../../assets/love.jpg";
+import loveImg from "../../assets/love.png";
 
 const FORMWIDTH = "80%";
 const ANIMATION_DELAY = 0.7;

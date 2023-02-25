@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
 import "./Home.scss";
-import nameCombo from "../../assets/nameCombo.svg";
 import arrowDown from "../../assets/arrow-down.svg";
 import mainImg from "../../assets/mainImg2.webp";
 import nameKr1 from "../../assets/name_kr-1.svg";
