@@ -44,7 +44,6 @@ const Bujo = () => {
     setLoading(true);
     e.preventDefault();
     const formData = {
-      Id: user.state.InviteId,
       InviteId,
       from: messageName,
       message: messageData,

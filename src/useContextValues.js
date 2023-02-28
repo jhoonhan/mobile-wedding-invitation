@@ -42,7 +42,7 @@ const useContextValues = () => {
   const [fontLoaded, fontCount] = useFontLoader(font);
   const [data, setData] = useState(false);
   const [user, setUser] = useState({
-    InviteId: "0000",
+    InviteId: 1000,
     name: "",
     guests: 0,
     attending: false,
@@ -53,6 +53,7 @@ const useContextValues = () => {
     message: "",
     maxAllowed: 0,
     registry: false,
+    userPw: 1000,
   });
   const [message, setMessage] = useState("");
   const [mainBgColor, setMainBgColor] = useState("#efefef");
