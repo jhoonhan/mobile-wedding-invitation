@@ -1,10 +1,10 @@
 import { useId } from "react";
 import { v1 as uuidv1 } from "uuid";
-import { USER_URL, MESSAGE_URL } from "../config";
+// import { USER_URL, MESSAGE_URL } from "../config";
 
-// const USER_URL = "http://localhost:3002/api/v1/aws/user";
-// const MESSAGE_URL = "http://localhost:3002/api/v1/aws/message";
-const DEFAULT_IDS = ["1000", "1001", "1000"];
+const USER_URL = "http://localhost:3002/user";
+const MESSAGE_URL = "http://localhost:3002/message";
+const DEFAULT_IDS = ["1000", "1001", "1000", "0000"];
 
 const IS_DEFAULT = (userId) => {
   return DEFAULT_IDS.includes(userId);
@@ -33,7 +33,6 @@ export const fetchUser = async ({ userId, queryPw }, setUser) => {
     ).json();
 
     const userData = data.Item;
-    console.log(userData);
     if (+userId === 1000) {
       pw = 1000;
     }
@@ -83,15 +82,15 @@ export const updateUser = async (userId, body) => {
 
 export const updateMessage = async (userId, body) => {
   try {
-    const conditionalId = IS_DEFAULT(userId) ? uuidv1() : userId;
+    const random = Math.floor(100000000 + Math.random() * 900000000);
+    const conditionalId = IS_DEFAULT(userId) ? random : +userId;
     const conditionalBody = {
       ...body,
-      Id: conditionalId,
-      InviteId: conditionalId,
+      InviteId: +conditionalId,
     };
 
     const data = await (
-      await fetch(`${MESSAGE_URL}/${userId}`, {
+      await fetch(`${MESSAGE_URL}/${+conditionalId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -109,8 +108,9 @@ export const updateMessage = async (userId, body) => {
 export const fetchMessage = async (userId, setMessage) => {
   try {
     const { Item } = await (
-      await fetch(`${MESSAGE_URL}/${userId ? userId : "1000"}`)
+      await fetch(`${MESSAGE_URL}/${userId ? +userId : 1000}`)
     ).json();
+
     if (Item) {
       setMessage(Item);
     }

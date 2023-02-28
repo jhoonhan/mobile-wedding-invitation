@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import animationLibrary from "../animationLibrary";
 
 import "./Rsvp.scss";
 import { AppContext } from "../../App";
@@ -22,6 +22,10 @@ const Rsvp = () => {
   useEffect(() => {
     setFormGuest(guests);
   }, [guests]);
+
+  useEffect(() => {
+    animationLibrary();
+  }, [loading, noway]);
 
   const handleChange = (e) => {
     const inputValue = +e.target.value;
@@ -58,7 +62,7 @@ const Rsvp = () => {
   const render = () => {
     if (noway) return null;
     return (
-      <motion.section
+      <section
         id="section--rsvp"
         className="flex--v align--cc"
         data-animation-container="true"
@@ -141,7 +145,7 @@ const Rsvp = () => {
             {!attending ? texts.rsvpSubmit[en] : texts.rsvpCancel[en]}
           </button>
         </form>
-      </motion.section>
+      </section>
     );
   };
   return render();

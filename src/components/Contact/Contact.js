@@ -5,7 +5,7 @@ import "./Contact.scss";
 import { AppContext } from "../../App";
 
 const ANIMATION_DELAY = 0.5;
-const ANIMATION_THRESHOLD = 0.7;
+const ANIMATION_THRESHOLD = 0.3;
 
 const Contact = () => {
   const { user, texts } = useContext(AppContext);

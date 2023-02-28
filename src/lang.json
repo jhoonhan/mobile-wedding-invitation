@@ -13,7 +13,7 @@
   ],
 
   "direction": ["찾아오시는길", "Get Direction"],
-  "blessing": ["마음 전하실곳", "Send Blessings"],
+  "blessing": ["축복 전하실곳", "Send Blessings"],
   "blessingSucess": [
     "축복 감사합니다. 행복하게 살겠습니다!",
     "Thank you for your blessing!"
