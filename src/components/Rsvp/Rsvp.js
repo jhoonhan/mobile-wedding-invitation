@@ -134,11 +134,23 @@ const Rsvp = () => {
               {texts.rsvpUninvited[en]}
             </p>
           )}
-
+          {attending && (
+            <p
+              className="animation__opacity-in"
+              data-animation-sequence="3"
+              style={{
+                fontSize: "var(--font-size--s)",
+                textAlign: "center",
+                whiteSpace: "pre-line",
+              }}
+            >
+              {texts.rsvpConfitm[en]}
+            </p>
+          )}
           <button
             className={`btn--cta ${
               maxAlert || formGuest === 0 ? "inactive" : "hard"
-            } animation__opacity-in`}
+            } ${attending ? "cancel" : ""} animation__opacity-in`}
             data-animation-delay={ANIMATION_DELAY}
             data-animation-sequence="3"
           >

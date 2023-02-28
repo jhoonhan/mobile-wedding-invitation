@@ -283,6 +283,14 @@ form {
     background-color: var(--color--gray);
     // background-color: red;
   }
+
+  &.cancel {
+    color: var(--color-font--light);
+    background-color: #ac3232;
+  }
+}
+.inactive-text {
+  color: var(--color--gray) !important;
 }
 
 @keyframes expanding {
