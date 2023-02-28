@@ -93,7 +93,7 @@ const Bujo = () => {
               <p>한정훈</p>
               <p>|</p>
               <p>
-                기업 <span className="f0">954-002985-01-012</span>
+                기업은행 <span className="f0">954-002985-01-012</span>
               </p>
               {AccountNumberCopy(95400298501012)}
             </div>
@@ -103,13 +103,13 @@ const Bujo = () => {
               <p>김정수</p>
               <p>|</p>
               <p>
-                기업 <span className="f0">147-108644-01-011</span>
+                기업은행 <span className="f0">147-108644-01-011</span>
               </p>
               {AccountNumberCopy(14710864401011)}
               <p>정정희</p>
               <p>|</p>
               <p>
-                국민 <span className="f0">830501-04-148513</span>
+                국민은행 <span className="f0">830501-04-148513</span>
               </p>
               {AccountNumberCopy(83050104148513)}
             </div>
