@@ -1,9 +1,7 @@
-import { useId } from "react";
-import { v1 as uuidv1 } from "uuid";
-// import { USER_URL, MESSAGE_URL } from "../config";
+import { USER_URL, MESSAGE_URL } from "../config";
 
-const USER_URL = "http://localhost:3002/user";
-const MESSAGE_URL = "http://localhost:3002/message";
+// const USER_URL = "http://localhost:3002/user";
+// const MESSAGE_URL = "http://localhost:3002/message";
 const DEFAULT_IDS = ["1000", "1001", "1000", "0000"];
 
 const IS_DEFAULT = (userId) => {
