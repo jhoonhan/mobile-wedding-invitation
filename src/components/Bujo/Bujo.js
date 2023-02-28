@@ -116,7 +116,31 @@ const Bujo = () => {
       );
     };
     const renderRegistry = () => {
-      return <h1>GET US MONEY</h1>;
+      return (
+        <>
+          <p style={{ textAlign: "center" }}>
+            Your present at our wedding is the greatest gift of all. However,
+            should you wish to honor us with a gift, a wishing well will be
+            available at the reception for your contribution and best wishes.
+          </p>
+          <a
+            href="https://www.amazon.com/hz/wishlist/ls/3OYZ9IS5B1ZCQ?type=wishlist"
+            className="btn--cta hard"
+          >
+            Wedding Registry
+            <img
+              src={icons[3]}
+              className="icon--arrow"
+              alt="down arrow"
+              style={{
+                marginTop: "-0.2rem",
+                width: "1.2rem",
+                transform: `rotate(${expand ? 270 : 90}deg)`,
+              }}
+            />
+          </a>
+        </>
+      );
     };
     const expandHideBox = () => {
       if (bujoDefault) return true;
@@ -129,7 +153,7 @@ const Bujo = () => {
         className="bujo-box flex--v align--cc animation__opacity-in"
         data-animation-delay={ANIMATION_DELAY}
         data-animation-sequence="4"
-        style={{ minWidth: FORMWIDTH, marginTop: "4rem" }}
+        style={{ width: FORMWIDTH, marginTop: "4rem" }}
         ref={bujoHideBox}
       >
         <p>{texts.bujo[en]}</p>

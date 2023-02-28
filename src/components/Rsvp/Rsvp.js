@@ -25,6 +25,12 @@ const Rsvp = () => {
 
   const handleChange = (e) => {
     const inputValue = +e.target.value;
+    if (isNaN(inputValue)) {
+      setMaxAlert(false);
+      setFormGuest(0);
+      return;
+    }
+
     if (inputValue > maxAllowed) {
       setMaxAlert(true);
     } else {

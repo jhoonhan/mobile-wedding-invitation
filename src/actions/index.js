@@ -33,7 +33,7 @@ export const fetchUser = async ({ userId, queryPw }, setUser) => {
     ).json();
 
     const userData = data.Item;
-    // console.log(userData);
+    console.log(userData);
     if (+userId === 1000) {
       pw = 1000;
     }

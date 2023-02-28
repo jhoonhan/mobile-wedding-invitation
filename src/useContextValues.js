@@ -14,7 +14,8 @@ import nameEn2 from "./assets/name_en-2.svg";
 
 // Icons
 import arrowDown from "./assets/arrow-down.svg";
-import arrowDownDark from "./assets/arrow-down_dark.svg";
+import arrowDownSmall from "./assets/arrow-down__light__small.svg";
+import arrowDownDark from "./assets/arrow-down__dark.svg";
 import copyIcon from "./assets/copy.svg";
 
 // Gallery
@@ -32,7 +33,7 @@ const homeList = [mainImg, nameKr1, nameKr2, nameEn1, nameEn2];
 
 const galleryList = [img0, img1, img2, img3, img4, img5];
 const imageList = [loveImg];
-const iconList = [arrowDown, arrowDownDark, copyIcon];
+const iconList = [arrowDown, arrowDownDark, copyIcon, arrowDownSmall];
 
 const imageLoadList = [...homeList, ...galleryList, ...imageList, ...iconList];
 
