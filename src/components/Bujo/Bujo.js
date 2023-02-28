@@ -13,6 +13,9 @@ const FORMWIDTH = "80%";
 const ANIMATION_DELAY = 0.7;
 const ANIMATION_THRESHOLD = 0.3;
 
+const REGISTRY_LINK =
+  "https://www.amazon.com/hz/wishlist/ls/3OYZ9IS5B1ZCQ/ref=nav_wishlist_lists_2";
+
 const Bujo = () => {
   const { user, userMessage, texts, icons } = useContext(AppContext);
   const { InviteId, name, bujo, bujoDefault, en, registry } = user.state;
@@ -122,10 +125,7 @@ const Bujo = () => {
             should you wish to honor us with a gift, a wishing well will be
             available at the reception for your contribution and best wishes.
           </p>
-          <a
-            href="https://www.amazon.com/hz/wishlist/ls/3OYZ9IS5B1ZCQ?type=wishlist"
-            className="btn--cta hard"
-          >
+          <a href={REGISTRY_LINK} className="btn--cta hard">
             Wedding Registry
             <img
               src={icons[3]}
