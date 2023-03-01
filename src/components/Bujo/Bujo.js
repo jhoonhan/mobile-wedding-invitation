@@ -119,7 +119,7 @@ const Bujo = () => {
     };
     const renderRegistry = () => {
       return (
-        <>
+        <div className="flex--v" style={{ maxWidth: "90%", gap: "2rem" }}>
           <p style={{ textAlign: "center" }}>
             Your present at our wedding is the greatest gift of all. However,
             should you wish to honor us with a gift, a wishing well will be
@@ -138,7 +138,7 @@ const Bujo = () => {
               }}
             />
           </a>
-        </>
+        </div>
       );
     };
     const expandHideBox = () => {
