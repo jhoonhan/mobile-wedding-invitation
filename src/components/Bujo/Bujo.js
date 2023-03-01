@@ -152,10 +152,11 @@ const Bujo = () => {
         className="bujo-box flex--v align--cc animation__opacity-in"
         data-animation-delay={ANIMATION_DELAY}
         data-animation-sequence="4"
-        style={{ width: FORMWIDTH, marginTop: "4rem" }}
+        style={{ minWidth: FORMWIDTH, marginTop: "4rem" }}
         ref={bujoHideBox}
       >
-        <p>{texts.bujo[en]}</p>
+        {!bujoDefault && <p>{texts.bujo[en]}</p>}
+
         {!bujoDefault && (
           <div className="flex--v ">
             <div

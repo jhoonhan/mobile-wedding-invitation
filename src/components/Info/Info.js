@@ -32,6 +32,7 @@ const Info = () => {
             className="flex--v align--cc animation__opacity-in"
             data-animation-sequence="1"
             data-animation-delay={ANIMATION_DELAY}
+            style={{ textAlign: "center" }}
           >
             <p className="f--h2 f2">Salvation Army of Greensboro</p>
             <p className="f2 ">1001 Freeman Mill Rd, Greensboro, NC 27406</p>
