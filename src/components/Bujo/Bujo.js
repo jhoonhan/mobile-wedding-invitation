@@ -13,8 +13,7 @@ const FORMWIDTH = "80%";
 const ANIMATION_DELAY = 0.7;
 const ANIMATION_THRESHOLD = 0.3;
 
-const REGISTRY_LINK =
-  "https://www.amazon.com/hz/wishlist/ls/3OYZ9IS5B1ZCQ/ref=nav_wishlist_lists_2";
+const REGISTRY_LINK = "https://www.amazon.com/wedding/share/yeweon-joe";
 
 const Bujo = () => {
   const { user, userMessage, texts, icons } = useContext(AppContext);
@@ -244,6 +243,7 @@ const Bujo = () => {
                 value={messageName}
                 onChange={handleNameCange}
                 style={{ width: "100%" }}
+                required={true}
               ></input>
             )}
           </div>
@@ -253,6 +253,7 @@ const Bujo = () => {
             value={messageData}
             data-animation-delay={ANIMATION_DELAY}
             data-animation-sequence="2"
+            required={true}
           ></textarea>
           {successMsg && (
             <p

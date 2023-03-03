@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 import "./Home.scss";
 import arrowDown from "../../assets/arrow-down.svg";
@@ -20,6 +20,11 @@ const Home = ({ readyTorender }) => {
   const { en } = user.state;
 
   // WORK HERE-- make it into resueable custom hook!
+  const handleClick = () => {
+    console.log(`tf`);
+    const height = getHeight(1.05);
+    window.scrollTo(0);
+  };
 
   const render = () => {
     if (!readyTorender) return null;
@@ -28,18 +33,18 @@ const Home = ({ readyTorender }) => {
         <section
           id="section--home"
           className="flex--v"
-          style={{ height: getHeight(1) }}
+          style={{ height: `${getHeight(1.05)}px` }}
         >
           <img
             className="home__bg ani--4"
             src={mainImg}
             alt="main"
-            style={{ height: getHeight(1), width: "100%" }}
+            style={{ height: `${getHeight(1.05)}px`, width: "100%" }}
             // onLoad={() => setLoaded([...loaded, true])}
           />
           <div
             className="home__texts__gradient top"
-            style={{ height: getHeight(2) }}
+            style={{ height: `${getHeight(2)}px` }}
           ></div>
           <div
             className="home__texts"
@@ -58,26 +63,27 @@ const Home = ({ readyTorender }) => {
             )}
             <div
               className="home__texts__heading flex--v align--cc"
-              style={{ gap: getHeight(20) }}
+              style={{ gap: `${getHeight(20)}px` }}
             >
               <img
                 src={en ? nameEn1 : nameKr1}
                 className="ani--1"
                 alt="name kr 1"
-                style={{ height: getHeight(en ? 14 : 10) }}
+                style={{ height: `${getHeight(en ? 14 : 10)}px` }}
               />
               <span className="border ani--2" />
               <img
                 src={en ? nameEn2 : nameKr2}
                 className="ani--3"
                 alt="name kr 2"
-                style={{ height: getHeight(en ? 22 : 18) }}
+                style={{ height: `${getHeight(en ? 22 : 18)}px` }}
               />
             </div>
           </div>
           <div
             className="home__texts__gradient bottom ani--5"
-            style={{ height: getHeight(10) }}
+            style={{ height: `${getHeight}`(10) }}
+            onClick={handleClick}
           >
             <div
               className="home__texts__scroll-down flex--v align--cc "
