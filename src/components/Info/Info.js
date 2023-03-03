@@ -8,6 +8,7 @@ const ANIMATION_THRESHOLD = 1;
 
 const Info = () => {
   const { user, texts } = useContext(AppContext);
+  const userId = user?.state?.InviteId;
 
   return (
     <section
@@ -34,8 +35,16 @@ const Info = () => {
             data-animation-delay={ANIMATION_DELAY}
             style={{ textAlign: "center" }}
           >
-            <p className="f--h2 f2">Salvation Army of Greensboro</p>
-            <p className="f2 ">1001 Freeman Mill Rd, Greensboro, NC 27406</p>
+            <p className="f--h2 f2">
+              {userId === 1000
+                ? "그린스보로 구세군교회"
+                : "Salvation Army of Greensboro"}
+            </p>
+            <p className="f2 ">
+              {userId === 1000
+                ? "1001 프리만 밀 로드, 그린스보로, 노스캐롤라이나 27406"
+                : "1001 Freeman Mill Rd, Greensboro, NC 27406"}
+            </p>
           </div>
           <a
             href="https://www.google.com/maps/search/?api=1&query=1001+Freeman+Mill+Rd,+Greensboro,+NC+27406

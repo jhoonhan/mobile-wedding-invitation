@@ -8,7 +8,8 @@ import "./Gallery.scss";
 // const imageList = [img1, img2, img1, img2];
 
 const Gallery = () => {
-  const { gallery } = useContext(AppContext);
+  const { user, texts, gallery } = useContext(AppContext);
+  const { en, InviteId } = user.state;
 
   const renderImages = () => {
     const images = gallery.map((img, i) => {
@@ -34,7 +35,7 @@ const Gallery = () => {
               className="animation__text-appear-down__target"
               data-animation-sequence="0"
             >
-              Gallery
+              {InviteId === 1000 ? "사진첩" : "Gallery"}
             </h1>
             <div
               className="section__title-boder animation__expand-right"

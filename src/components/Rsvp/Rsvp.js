@@ -120,9 +120,6 @@ const Rsvp = () => {
                 type="text"
                 value={formGuest}
                 onChange={handleChange}
-                onClick={() => {
-                  setFormGuest("");
-                }}
                 required
               ></input>
             ) : (

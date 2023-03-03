@@ -35,13 +35,13 @@ const Home = ({ readyTorender }) => {
         <section
           id="section--home"
           className="flex--v"
-          style={{ height: `${getHeight(1.05)}px` }}
+          style={{ height: `${getHeight(1)}px` }}
         >
           <img
             className="home__bg ani--4"
             src={mainImg}
             alt="main"
-            style={{ height: `${getHeight(1.05)}px`, width: "100%" }}
+            style={{ height: `${getHeight(1)}px`, width: "100%" }}
             // onLoad={() => setLoaded([...loaded, true])}
           />
           <div

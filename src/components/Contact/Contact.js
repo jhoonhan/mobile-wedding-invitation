@@ -9,7 +9,7 @@ const ANIMATION_THRESHOLD = 0.3;
 
 const Contact = () => {
   const { user, texts } = useContext(AppContext);
-  const { en } = user.state;
+  const { en, InviteId } = user.state;
 
   const render = () => {
     return (
@@ -29,7 +29,7 @@ const Contact = () => {
                 className="animation__text-appear-down__target"
                 data-animation-sequence="0"
               >
-                {texts.contact[en]}
+                {InviteId === 1000 ? "연락처" : "Contact"}
               </h1>
               <div
                 className="section__title-boder animation__expand-right"
