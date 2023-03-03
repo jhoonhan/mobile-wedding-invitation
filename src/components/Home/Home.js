@@ -14,16 +14,18 @@ const TEXTMARGINTOP = "12%";
 
 const Home = ({ readyTorender }) => {
   const getHeight = (value) => {
-    return `${window.innerHeight / value}px`;
+    return window.innerHeight / value;
   };
   const { user, texts } = useContext(AppContext);
   const { en } = user.state;
 
   // WORK HERE-- make it into resueable custom hook!
   const handleClick = () => {
-    console.log(`tf`);
-    const height = getHeight(1.05);
-    window.scrollTo(0);
+    window.scrollTo({
+      top: getHeight(1.5),
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const render = () => {
@@ -82,7 +84,7 @@ const Home = ({ readyTorender }) => {
           </div>
           <div
             className="home__texts__gradient bottom ani--5"
-            style={{ height: `${getHeight}`(10) }}
+            style={{ height: `${getHeight(10)}px` }}
             onClick={handleClick}
           >
             <div
