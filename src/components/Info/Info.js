@@ -8,6 +8,7 @@ const ANIMATION_THRESHOLD = 1;
 
 const Info = () => {
   const { user, texts } = useContext(AppContext);
+  const { en } = user.state;
   const userId = user?.state?.InviteId;
 
   return (
@@ -33,18 +34,10 @@ const Info = () => {
             className="flex--v align--cc animation__opacity-in"
             data-animation-sequence="1"
             data-animation-delay={ANIMATION_DELAY}
-            style={{ textAlign: "center" }}
+            style={{ textAlign: "center", gap: "0.5rem" }}
           >
-            <p className="f--h2 f2">
-              {userId === 1000
-                ? "그린스보로 구세군교회"
-                : "Salvation Army of Greensboro"}
-            </p>
-            <p className="f2 ">
-              {userId === 1000
-                ? "1001 프리만 밀 로드, 그린스보로, 노스캐롤라이나 27406"
-                : "1001 Freeman Mill Rd, Greensboro, NC 27406"}
-            </p>
+            <p className="f--h2 f2">{texts.infoChurchName[en]}</p>
+            <p className="f2 ">{texts.infoAddress[en]}</p>
           </div>
           <a
             href="https://www.google.com/maps/search/?api=1&query=1001+Freeman+Mill+Rd,+Greensboro,+NC+27406

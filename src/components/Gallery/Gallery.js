@@ -35,7 +35,7 @@ const Gallery = () => {
               className="animation__text-appear-down__target"
               data-animation-sequence="0"
             >
-              {InviteId === 1000 ? "사진첩" : "Gallery"}
+              {texts.gallery[en]}
             </h1>
             <div
               className="section__title-boder animation__expand-right"

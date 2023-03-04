@@ -29,7 +29,7 @@ const Contact = () => {
                 className="animation__text-appear-down__target"
                 data-animation-sequence="0"
               >
-                {InviteId === 1000 ? "연락처" : "Contact"}
+                {texts.contact[en]}
               </h1>
               <div
                 className="section__title-boder animation__expand-right"

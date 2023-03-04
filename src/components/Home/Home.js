@@ -11,6 +11,7 @@ import nameEn2 from "../../assets/name_en-2.svg";
 import { AppContext } from "../../App";
 
 const TEXTMARGINTOP = "12%";
+const HOME_HEIGHT_RATIO = 1.0;
 
 const Home = ({ readyTorender }) => {
   const getHeight = (value) => {
@@ -35,13 +36,16 @@ const Home = ({ readyTorender }) => {
         <section
           id="section--home"
           className="flex--v"
-          style={{ height: `${getHeight(1)}px` }}
+          style={{ height: `${getHeight(HOME_HEIGHT_RATIO)}px` }}
         >
           <img
             className="home__bg ani--4"
             src={mainImg}
             alt="main"
-            style={{ height: `${getHeight(1)}px`, width: "100%" }}
+            style={{
+              height: `${getHeight(HOME_HEIGHT_RATIO)}px`,
+              width: "100%",
+            }}
             // onLoad={() => setLoaded([...loaded, true])}
           />
           <div
