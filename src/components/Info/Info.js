@@ -8,8 +8,7 @@ const ANIMATION_THRESHOLD = 1;
 
 const Info = () => {
   const { user, texts } = useContext(AppContext);
-  const { en } = user.state;
-  const userId = user?.state?.InviteId;
+  const { en, InviteId } = user.state;
 
   return (
     <section
@@ -36,8 +35,14 @@ const Info = () => {
             data-animation-delay={ANIMATION_DELAY}
             style={{ textAlign: "center", gap: "0.5rem" }}
           >
-            <p className="f--h2 f2">{texts.infoChurchName[en]}</p>
-            <p className="f2 ">{texts.infoAddress[en]}</p>
+            <p className="f--h2 f2">
+              {InviteId === 1000
+                ? texts.infoChurchName[en]
+                : texts.infoChurchName[1]}
+            </p>
+            <p className="f2 ">
+              {InviteId === 1000 ? texts.infoAddress[en] : texts.infoAddress[1]}
+            </p>
           </div>
           <a
             href="https://www.google.com/maps/search/?api=1&query=1001+Freeman+Mill+Rd,+Greensboro,+NC+27406
