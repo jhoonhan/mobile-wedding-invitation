@@ -87,7 +87,7 @@ const Rsvp = () => {
               />
             </div>
             <p
-              className="animation__text-appear-down__target"
+              className="center-text animation__text-appear-down__target"
               data-animation-sequence="1"
             >
               {texts.rsvpDescription[en]}
