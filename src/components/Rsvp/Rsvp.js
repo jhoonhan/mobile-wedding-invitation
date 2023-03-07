@@ -8,7 +8,7 @@ import Loader from "../Loader";
 
 const FORMWIDTH = "70%";
 const ANIMATION_DELAY = 1;
-const ANIMATION_THRESHOLD = 0.8;
+const ANIMATION_THRESHOLD = 0.6;
 
 const Rsvp = () => {
   const { user, texts } = useContext(AppContext);

@@ -3,7 +3,7 @@ import "./Info.scss";
 
 import { AppContext } from "../../App";
 
-const ANIMATION_DELAY = 0.7;
+const ANIMATION_DELAY = 0.5;
 const ANIMATION_THRESHOLD = 1;
 
 const Info = () => {
