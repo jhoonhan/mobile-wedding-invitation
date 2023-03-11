@@ -71,7 +71,7 @@ const Bujo = () => {
   };
 
   const renderBujo = () => {
-    // if (!bujo) return null;
+    if (!bujo) return null;
 
     const AccountNumberCopy = (accountNumber) => {
       return (
