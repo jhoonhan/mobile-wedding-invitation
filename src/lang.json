@@ -11,7 +11,7 @@
   "rsvpTotal": ["본인 포함한 참석인원", "Total Attending Including Yourself"],
   "rsvpInvited": ["초대", "Invited"],
   "rsvpSubmit": ["참석하기", "RSVP"],
-  "rsvpCancel": ["참석취소하기", "Cancle RSVP"],
+  "rsvpCancel": ["참석취소하기", "Cancel RSVP"],
   "rsvpConfitm": [
     "참석여부 확인 되었습니다\n참석 취소를 원하시면 밑 버튼을 눌러주세요",
     "RSVP confimed. Thank you!"
